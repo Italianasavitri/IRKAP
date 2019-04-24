@@ -14,10 +14,7 @@
       <dxi-item itemType="group" [colCount]="1">
 
         <dxi-item itemType="group">
-          <!-- <dxi-item name="txtGroupID" dataField="gid" [label]="{ text: 'ID' }" editorType="dxTextBox" [editorOptions]="{readOnly: true}"></dxi-item> -->
-          <!-- <dxi-item name="txtPortofolioProduk" dataField="parent_gid" [label]="{ text: 'Portofolio Produk' }"  editorType="dxTextBox" [editorOptions]="{readOnly: isDetail}" [validationRules]="[{type: 'required', message: 'Prtofolio Produk harus diisi' }]"></dxi-item> -->
-          <!-- <dxi-item name="portofolioproduk" dataField="parent_gid" [label]="{ text: 'Portofolio Produk' }" editorType="dxSelectBox"  placeholder="--Pilih Anggaran--" [editorOptions]="{readOnly: isDetail, dataSource: PortofolioProduk}" [validationRules]="[{type: 'required', message: 'Portofolio Produk harus diisi' }]" ></dxi-item> -->
-          <dxi-item name="PortofolioProduk" dataField="parent_gid" editorType="dxSelectBox" [label]="{ text: 'Portofolio Produk' }" [editorOptions]="{readOnly: isDetail, items: daftarPortofolioProduk, displayExpr: 'nama', valueExpr: 'gid' }" [validationRules]="[{type: 'required', message: 'Display harus dipilih' }]" ></dxi-item>
+          <dxi-item name="PortofolioProduk" dataField="parent_gid" editorType="dxSelectBox" [label]="{ text: 'Portofolio Produk' }" [editorOptions]="{readOnly: isDetail, items: daftarPortofolioProduk, displayExpr: 'nama', valueExpr: 'gid' }" ></dxi-item>
           <dxi-item name="txtKode" dataField="kode" [label]="{ text: 'Kode' }" editorType="dxTextBox" [editorOptions]="{readOnly: isDetail}" [validationRules]="[{type: 'required', message: 'Kode harus diisi' }]"></dxi-item>
           <dxi-item name="txtNama" dataField="nama" [label]="{ text: 'Nama' }" editorType="dxTextArea" [editorOptions]="{readOnly: isDetail}" [validationRules]="[{type: 'required', message: 'Nama harus diisi' }]"></dxi-item>
         </dxi-item>

@@ -28,13 +28,11 @@
           <div *ngIf="isAdv">
             <dx-form id="form" itemType="group" sssClass="first-group" [formData]="search" [colCount]="3">
               <dxi-item itemType="group" [colSpan]="2">
-                <dxi-item dataField="rjppid" [label]="{ text: 'ID' }" editorType="dxTextBox" [editorOptions]="{ disabled: false }" [colSpan]="1"></dxi-item>
                 <dxi-item dataField="periode" [label]="{ text: 'Judul Periode' }" editorType="dxTextBox" [editorOptions]="{ disabled: false }" [colSpan]="1"></dxi-item>
                 <dxi-item dataField="description" [label]="{ text: 'Deskripsi' }" editorType="dxTextArea" [editorOptions]="{ disabled: false, hight: 90 }" [colSpan]="1"></dxi-item>
                 <dxi-item dataField="notes" [label]="{ text: 'Notes' }" editorType="dxTextArea" [editorOptions]="{ disabled: false, hight: 90 }" [colSpan]="1"></dxi-item>
                 <dxi-item dataField="start_year" [editorOptions]="{ disabled: false }" [colSpan]="1"></dxi-item>
                 <dxi-item dataField="end_year" [editorOptions]="{ disabled: false }" [colSpan]="1"></dxi-item>
-                <!--<dxi-item dataField="menu" [editorOptions]="{ disabled: false }" [colSpan]="1"></dxi-item>-->
               </dxi-item>
               <dxi-item itemType="group">
                 <dxi-item [colSpan]="1">
@@ -51,8 +49,17 @@
 
         <!-- TABLE -->
         <div id="data-grid-demo" style="margin-top: 20px;">
-          <dx-data-grid id="gridContainer" [dataSource]="gridDataSource" [showRowLines]="true" [showBorders]="true" [columnHidingEnabled]="false"
-                        [rowAlternationEnabled]="true" [columnAutoWidth]="true" [wordWrapEnabled]="true">
+          <dx-data-grid id="gridContainer" 
+            [dataSource]="gridDataSource" 
+            [showRowLines]="true" 
+            [showBorders]="true"
+            [allowColumnReordering]="true"
+            [allowColumnResizing]="true" 
+            [columnHidingEnabled]="false"
+            [rowAlternationEnabled]="true" 
+            [columnAutoWidth]="true" 
+            [wordWrapEnabled]="true">
+
             <dxo-header-filter [visible]="true"></dxo-header-filter>
             <dxo-filter-row [visible]="true"></dxo-filter-row>
             <dxo-paging [pageSize]="10"></dxo-paging>
@@ -60,7 +67,6 @@
             </dxo-pager>
             <dxo-export [enabled]="true" fileName="RJPP" [allowExportSelectedData]="false"></dxo-export>
 
-            <dxi-column dataField="rjppid" caption="ID" sortOrder="asc" [allowEditing]="false"></dxi-column>
             <dxi-column dataField="periode" caption="Periode" [allowEditing]="false"></dxi-column>
             <dxi-column dataField="description" caption="Description" [allowEditing]="false"></dxi-column>
             <dxi-column dataField="notes" caption="Notes" [allowEditing]="false"></dxi-column>

@@ -205,7 +205,8 @@ export class RjppComponent implements AfterViewInit {
     const d1 = this.elementRef.nativeElement.getElementsByClassName('dx-toolbar-before')[0];
     const $customButton = $('<div id="addNewRole">').dxButton({
       icon: 'add',
-      text: 'Tambah RJPP Baru',
+      text: 'Tambah RJPP',
+      type: 'default',
       onClick: function () {
         ini.isAdd = true;
         ini.addVisible = ini.isAdd;

@@ -1,5 +1,5 @@
 import {AfterViewInit, Component, ElementRef, Inject, ViewChild} from '@angular/core';
-import {DxDataGridComponent, DxCheckBoxComponent} from 'devextreme-angular';
+import {DxDataGridComponent,DxTreeListComponent, DxCheckBoxComponent, DxTreeListModule} from 'devextreme-angular';
 import {Search} from './group-product.model';
 import {GroupProductService} from './group-product.service';
 import notify from 'devextreme/ui/notify';
@@ -22,7 +22,7 @@ declare const $: any;
 
 // }
 export class GroupProductComponent implements AfterViewInit {
-  @ViewChild(DxDataGridComponent) dataGrid: DxDataGridComponent;
+  @ViewChild(DxTreeListComponent) dataList: DxTreeListComponent;
 
   contextItems: any;
   target: any;
@@ -46,20 +46,12 @@ export class GroupProductComponent implements AfterViewInit {
   isAdd = false;
   isEdit = false;
   chevron = 'chevrondown';
-  fakeArray: any;
-  no = 0;
-  page = 1;
-  limitVal = 5;
-  offset = 0;
-  jumlahHal = 0;
-  minLimitShow = 1;
-  maxLimitShow = 10;
-  activeClass = 5;
 
   constructor(
     private elementRef: ElementRef,
     @Inject(GroupProductService) private groupproductService: GroupProductService
-  ) {
+    ) {
+
     this.search = {
       gid: '',
       kode: '',
@@ -87,76 +79,16 @@ export class GroupProductComponent implements AfterViewInit {
       }
     ];
 
-    //this.groupproductService.getAll()
-    //.subscribe(resp => {
-    //  console.log(resp);
-    //  this.gridDataSource = resp.d.list;
-    //}, err => {
-    //  console.log(err);
-    //})
-
-    this.pagination();
-    // this.getRoleData();
-  }
-
-  //pagination
-  range(value){
-    var nilai = Math.ceil(value/this.limitVal);
-    this.jumlahHal = nilai;
-    this.fakeArray = new Array(nilai);
-  }
-
-  limit(event){
-    this.activeClass = event.target.id;
-    this.limitVal = event.target.id;
-    this.offset = 0;
-    this.page = 1;
-    this.pagination();
-  }
-
-  doneClick(event){
-    this.offset = event.target.id;
-    this.pagination();
-  }
-
-  next(){
-    if (this.page==this.jumlahHal) {
-      alert('ini halaman terakhir');
-    }else{
-      this.offset = Number(this.offset)+1;
-      this.pagination();
-    }
-  }
-
-  prev(){
-    if (Number(this.page)==1) {
-      console.log('hal awal');
-    }else{
-      this.offset = Number(this.offset)-1;
-      this.pagination();
-    }
-  }
-
-  pagination(){
-    this.page = Number(this.offset)+1;
-    if (this.page==this.maxLimitShow+1) {
-      this.minLimitShow = Number(this.page);
-      this.maxLimitShow = Number(this.page)+10;
-    }else if(this.page==this.minLimitShow-1){
-      this.minLimitShow = Number(this.page)-9;
-      this.maxLimitShow = Number(this.page);
-    }
-    
-    this.groupproductService.getLimit(this.offset,this.limitVal)
+    this.groupproductService.getAll()
     .subscribe(resp => {
-      console.log(resp);
-      this.gridDataSource = resp.d.list;
-      this.range(resp.d.total);
+     console.log(resp);
+     this.gridDataSource = resp.d.list;
     }, err => {
-      console.log(err);
+     console.log(err);
     })
+
+    //this.getRoleData();
   }
-  //end pagination
   
   refresh() {
     this.groupproductService.getAll().subscribe(resp => {
@@ -164,7 +96,7 @@ export class GroupProductComponent implements AfterViewInit {
     }, err => {
       console.log(err);
     })
-    this.dataGrid.instance.refresh();
+    this.dataList.instance.refresh();
   }
 
   getRoleData() {
@@ -204,7 +136,7 @@ export class GroupProductComponent implements AfterViewInit {
     const d1 = this.elementRef.nativeElement.getElementsByClassName('dx-toolbar-before')[0];
     const $customButton = $('<div id="addNewRole">').dxButton({
       icon: 'add',
-      text: 'Tambah Portofolio Produk Baru',
+      type: 'default',
       onClick: function () {
         ini.isAdd = true;
         ini.addVisible = ini.isAdd;

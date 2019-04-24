@@ -39,27 +39,29 @@
         </div>
 
         <div id="data-grid-demo" style="margin-top: 20px;">
-          <dx-data-grid id="gridContainer" [dataSource]="gridDataSource" [showRowLines]="true" [showBorders]="true" [columnHidingEnabled]="false"
-                        [rowAlternationEnabled]="true" [columnAutoWidth]="true" [wordWrapEnabled]="true">
+          <dx-data-grid id="gridContainer" 
+            [dataSource]="gridDataSource" 
+            [showRowLines]="true" 
+            [showBorders]="true"
+            [allowColumnReordering]="true"
+            [allowColumnResizing]="true" 
+            [columnHidingEnabled]="false"
+            [rowAlternationEnabled]="true" 
+            [columnAutoWidth]="true" 
+            [wordWrapEnabled]="true">
+
             <dxo-header-filter [visible]="true"></dxo-header-filter>
             <dxo-filter-row [visible]="true"></dxo-filter-row>
             <dxo-paging [pageSize]="10"></dxo-paging>
             <dxo-pager [showPageSizeSelector]="true" [allowedPageSizes]="[10, 20, 50]" [showInfo]="true" [showNavigationButtons]="true">
             </dxo-pager>
             <dxo-export [enabled]="true" fileName="Sasaran Strategis" [allowExportSelectedData]="false"></dxo-export>
-
-            <dxi-column dataField="sid" width="90px" caption="Sid" sortOrder="asc" [allowEditing]="false"></dxi-column>
-           
-            <dxi-column dataField="sasaran" caption="Sasaran" width="170px" [allowEditing]="false"></dxi-column>
-
-            <dxi-column dataField="deskripsi" caption="Deskripsi" width="170px" [allowEditing]="false"></dxi-column>
-
-            <dxi-column dataField="tahun" caption="Tahun" width="170px" [allowEditing]="false"></dxi-column>
-
-            <dxi-column dataField="indikator" caption="Indikator" width="170px" [allowEditing]="false"></dxi-column>
-
-            <dxi-column dataField="perspektif" caption="Perspektif" width="170px" [allowEditing]="false"></dxi-column>
-           
+            
+            <dxi-column dataField="sasaran" caption="Sasaran" [allowEditing]="false"></dxi-column>
+            <dxi-column dataField="deskripsi" caption="Deskripsi" [allowEditing]="false"></dxi-column>
+            <dxi-column dataField="tahun" caption="Tahun" [allowEditing]="false"></dxi-column>
+            <dxi-column dataField="indikator" caption="Indikator" [allowEditing]="false"></dxi-column>
+            <dxi-column dataField="perspektif" caption="Perspektif" [allowEditing]="false"></dxi-column>
             <dxi-column [fixed]="true" width="55px" dataField="sid" caption="Action" [allowExporting]="false" [allowFiltering]="false" [allowSorting]="false" cellTemplate="cellTemplate"></dxi-column>
             <div *dxTemplate="let data of 'cellTemplate'">
               <div (click)="showMenu(data.value)" class="text-center">

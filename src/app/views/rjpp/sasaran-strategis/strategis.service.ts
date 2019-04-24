@@ -54,7 +54,7 @@ export class StrategisService {
     const token = localStorage.getItem('token');
     //http://localhost:9092/system/RoleMenus/table?offset=0&limit=10
     //http://localhost:9092/system/RoleMenus/table?offset=10&limit=10
-    return this.http.post < any > (this.resourceUrlRole + '/table', {
+    return this.http.post < any > (this.resourceUrlRole + '/query?sasaran=Obyektif', {
       username : username,
       token : token
     })

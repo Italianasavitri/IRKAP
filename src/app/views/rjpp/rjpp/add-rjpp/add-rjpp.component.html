@@ -11,22 +11,21 @@
 
     <dx-form [(formData)]="role" validationGroup="roleData">
       <dxi-item itemType="group" [colCount]="1">
-        <dxi-item itemType="group">
-          <!-- <dxi-item name="txtRoleID" dataField="rjppid" caption="ID" editorType="dxTextBox" [editorOptions]="{readOnly: true}"></dxi-item> -->
-          <dxi-item name="txtKeterangan" dataField="periode" caption="Judul Periode" editorType="dxTextBox" [editorOptions]="{readOnly: isDetail}" [validationRules]="[{type: 'required', message: 'Keterangan harus diisi' }]"></dxi-item>
-          <dxi-item name="txtKeterangan" dataField="description" caption="Deskripsi" editorType="dxTextArea" [editorOptions]="{readOnly: isDetail, hight: 90 }" [validationRules]="[{type: 'required', message: 'Keterangan harus diisi' }]"></dxi-item>
-          <dxi-item name="txtKeterangan" dataField="notes" caption="Notes" editorType="dxTextArea" [editorOptions]="{readOnly: isDetail, hight: 90 }" [validationRules]="[{type: 'required', message: 'Keterangan harus diisi' }]"></dxi-item>
-          <!-- <dxi-item name="txtKeterangan" dataField="start_year" caption="Start Year" editorType="dxTextBox" [editorOptions]="{readOnly: isDetail}" [validationRules]="[{type: 'required', message: 'Keterangan harus diisi' }]"></dxi-item> -->
-          <dxi-item name="startyear" dataField="start_year" [label]="{ text: 'Tahun Mulai' }" editorType="dxSelectBox"  placeholder="--Pilih Tahun--" [editorOptions]="{readOnly: isDetail, dataSource: TahunMulai}" [validationRules]="[{type: 'required', message: 'Tahun mulai harus diisi' }]" ></dxi-item>
-          <!-- <dxi-item name="txtKeterangan" dataField="end_year" caption="End Year" editorType="dxTextBox" [editorOptions]="{readOnly: isDetail}" [validationRules]="[{type: 'required', message: 'Keterangan harus diisi' }]"></dxi-item> -->
-          <dxi-item name="endyear" dataField="end_year" [label]="{ text: 'Tahun Akhir' }" editorType="dxSelectBox"  placeholder="--Pilih Tahun--" [editorOptions]="{readOnly: isDetail, dataSource: TahunAkhir}" [validationRules]="[{type: 'required', message: 'Tahun Akhir harus diisi' }]" ></dxi-item>
-        </dxi-item>
-        <dxi-item itemType="group">
-          <dxi-item itemType="empty"></dxi-item>
-        </dxi-item>
+        <dxi-item name="txtKeterangan" dataField="periode" caption="Judul Periode" editorType="dxTextBox" [editorOptions]="{readOnly: isDetail}" [validationRules]="[{type: 'required', message: 'Keterangan harus diisi' }]"></dxi-item>
+      </dxi-item>
+      <dxi-item itemType="group" [colCount]="2">
+          <dxi-item name="txtKeterangan" dataField="description" caption="Deskripsi" editorType="dxTextArea" [editorOptions]="{readOnly: isDetail, hight: 180 }" [validationRules]="[{type: 'required', message: 'Keterangan harus diisi' }]"></dxi-item>
+          <dxi-item name="txtKeterangan" dataField="notes" caption="Notes" editorType="dxTextArea" [editorOptions]="{readOnly: isDetail, hight: 180 }" [validationRules]="[{type: 'required', message: 'Keterangan harus diisi' }]"></dxi-item>
+      </dxi-item>
+      <dxi-item itemType="group" [colCount]="2">
+          <dxi-item itemType="group" [colCount]="2">
+            <dxi-item name="startyear" dataField="start_year" [label]="{ text: 'Tahun Mulai' }" editorType="dxSelectBox"  placeholder="--Pilih Tahun--" [editorOptions]="{readOnly: isDetail, dataSource: TahunMulai}" [validationRules]="[{type: 'required', message: 'Tahun mulai harus diisi' }]" ></dxi-item>  
+            <dxi-item name="endyear" dataField="end_year" [label]="{ text: 'Tahun Akhir' }" editorType="dxSelectBox"  placeholder="--Pilih Tahun--" [editorOptions]="{readOnly: isDetail, dataSource: TahunAkhir}" [validationRules]="[{type: 'required', message: 'Tahun Akhir harus diisi' }]" ></dxi-item>
+          </dxi-item>
       </dxi-item>
     </dx-form>
-    <!-- <br> -->
+    
+    <br>
     <!-- <p>Menu Access :</p> -->
     <dx-tree-list
       [dataSource]="menuTree"

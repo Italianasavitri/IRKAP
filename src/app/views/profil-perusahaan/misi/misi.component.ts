@@ -66,12 +66,6 @@ export class MisiComponent implements AfterViewInit {
         items: false
       },
       {
-        text: 'Detail',
-        disabled: false,
-        beginGroup: false,
-        items: false
-      },
-      {
         text: 'Delete',
         disabled: false,
         beginGroup: false,
@@ -196,7 +190,7 @@ export class MisiComponent implements AfterViewInit {
     const d1 = this.elementRef.nativeElement.getElementsByClassName('dx-toolbar-before')[0];
     const $customButton = $('<div id="addNewRole">').dxButton({
       icon: 'add',
-      text: 'Tambah Misi Baru',
+      type: 'default',
       onClick: function () {
         ini.isAdd = true;
         ini.addVisible = ini.isAdd;
