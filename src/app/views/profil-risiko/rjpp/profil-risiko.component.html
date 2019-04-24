@@ -139,6 +139,14 @@
         <!-- end pagination -->
 
       </div>
+
+      <br>
+      
+      <tabset>
+        <tab heading="Departemen"><app-departemen></app-departemen></tab>
+        <tab heading="Plan Mitigasi"><app-plan-mitigasi></app-plan-mitigasi></tab>
+      </tabset>
+
       <div *ngIf="addVisible">
         <app-add-profil-risiko-rjpp [isEdit]="isEdit" [isDetail]="isDetail" [editItem]="target" [addVisible]="addVisible" (onHideAdd)="onHideAdd()"></app-add-profil-risiko-rjpp>
       </div>

@@ -62,6 +62,12 @@ import {
   import { PaguAnggaranComponent } from './pagu-anggaran/pagu-anggaran.component';
   import { EntriRealisasiComponent } from './entri-realisasi/entri-realisasi.component';
   import { AddPaguAnggaranComponent } from './pagu-anggaran/add-pagu-anggaran/add-pagu-anggaran.component';
+import { IndikatorInputComponent } from './rkap/add-rkap/indikator-input/indikator-input.component';
+import { IndikatorOutputComponent } from './rkap/add-rkap/indikator-output/indikator-output.component';
+import { DocumentComponent } from './rkap/add-rkap/document/document.component';
+import { RabComponent } from './rkap/add-rkap/rab/rab.component';
+import { InputRkapComponent } from './rkap/add-rkap/input-rkap/input-rkap.component';
+import { PersetujuanMrComponent } from './persetujuan-mr/persetujuan-mr.component';
 
   @NgModule({
     imports: [
@@ -107,7 +113,13 @@ import {
       PersetujuanBodComponent,
       PaguAnggaranComponent,
       EntriRealisasiComponent,
-      AddPaguAnggaranComponent
+      AddPaguAnggaranComponent,
+      IndikatorInputComponent,
+      IndikatorOutputComponent,
+      DocumentComponent,
+      RabComponent,
+      InputRkapComponent,
+      PersetujuanMrComponent
     ],
     exports: [
     ],

@@ -16,6 +16,7 @@ import { PersetujuanVpkeuComponent } from './persetujuan-vpkeu/persetujuan-vpkeu
 import { PersetujuanBodComponent } from './persetujuan-bod/persetujuan-bod.component';
 import { PaguAnggaranComponent } from './pagu-anggaran/pagu-anggaran.component';
 import { EntriRealisasiComponent } from './entri-realisasi/entri-realisasi.component';
+import { PersetujuanMrComponent } from './persetujuan-mr/persetujuan-mr.component';
 
 const routes: Routes = [
   {
@@ -57,6 +58,13 @@ const routes: Routes = [
             component: PersetujuanRenkoComponent,
             data: {
               title: 'Persetujuan Renko'
+            }
+          },
+          {
+            path: 'persetujuan-mr',
+            component: PersetujuanMrComponent,
+            data: {
+              title: 'Persetujuan Manajemen Risiko'
             }
           },
           {
