@@ -2,15 +2,13 @@
   <div class="card" id="new47">
 
     <div class="card-header">
-      <strong>Visi <span *ngIf="(isAdd || isEdit) && !isDetail">Add / Edit</span></strong>
-      <span *ngIf="isDetail" class="pull-right">
-        <dx-button id="btnBack" text="< Back" (onClick)="back()"></dx-button>
-      </span>
+      <strong>Visi</strong>
     </div>
 
     <div class="card-body">
-      <div [hidden]="isDetail || isAdd">
+
         <div id="data-grid-demo">
+
           <dx-data-grid id="gridContainer" 
             [dataSource]="gridDataSource" 
             [showRowLines]="false" 
@@ -41,8 +39,10 @@
               </div>
             </div>
           </dx-data-grid>
+
           <app-context [menuVisible]="menuVisible" [target]="target" [contextItems]="contextItems" (onHideMenu)="onHideMenu()" (itemClick)="itemClick($event)"></app-context>
           <app-progress [progressVisible]="progressVisible" [progressContent]="progressContent" [progressTitle]="progressTitle" (onHideProgresss)="onHideProgress()"></app-progress>
+        
         </div>
 
         <!-- pagination -->
@@ -70,12 +70,18 @@
         </div> 
         <!-- end pagination -->
 
-      </div>
       <div *ngIf="addVisible">
         <app-add-visi [isEdit]="isEdit" [isDetail]="isDetail" [editItem]="target" [addVisible]="addVisible" (onHideAdd)="onHideAdd()"></app-add-visi>
       </div>
-      <app-form-confirmation [isDelete]="isDelete" [isCancel]="isCancel" [confVisible]="confVisible" (onYesConf)="delete()" (onHideConf)="onHideConf()"
-                             (onDeleteConf)="onDeleteConf()" (onCancelConf)="onCancelConf()"></app-form-confirmation>
+      <app-form-confirmation 
+        [isDelete]="isDelete" 
+        [isCancel]="isCancel" 
+        [confVisible]="confVisible" 
+          (onYesConf)="delete()" 
+          (onHideConf)="onHideConf()"
+          (onDeleteConf)="onDeleteConf()" 
+          (onCancelConf)="onCancelConf()">
+      </app-form-confirmation>
     </div>
   </div>
 </div>

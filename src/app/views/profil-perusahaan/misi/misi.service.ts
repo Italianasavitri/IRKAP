@@ -47,7 +47,6 @@ export class MisiService {
     const username = localStorage.getItem('username');
     const token = localStorage.getItem('token');
     const today = new Date().toISOString().slice(0, 10);
-    // data.isallowregistration = 1;
     return this.http.post < any > (this.resourceUrlRole + '/insert', data)
   }
 
@@ -56,19 +55,10 @@ export class MisiService {
     const token = localStorage.getItem('token');
     const today = new Date().toISOString().slice(0, 10);
     console.log(data);
-    /*
-    if (data.isallowregistration = false) {
-      data.isallowregistration = '1';
-    } else {
-      data.isallowregistration = '0';
-    }
-    */
     return this.http.post < any > (this.resourceUrlRole + '/update', data)
   }
 
   delete(data: any): Observable<any> {
-    /* data.activationCode = 'N';
-    return this.http.put(this.resourceUrlRole + '/' + data.role_id, data)*/
     const token = localStorage.getItem('token');
     return this.http.get(this.resourceUrlRole + '/delete?token=' + token + '&misi_id=' + data.misi_id)
   }

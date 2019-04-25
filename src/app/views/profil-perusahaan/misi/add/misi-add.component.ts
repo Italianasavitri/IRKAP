@@ -5,11 +5,10 @@ import {
   EventEmitter, OnInit, AfterViewInit, ViewChild, ViewChildren, QueryList, ContentChildren, AfterContentChecked, AfterContentInit
  } from '@angular/core';
 import {MisiService} from '../misi.service';
-// import { AddRoleService } from './role-add.service';
 
 import {Menu, Misi, KategoriAktif} from '../misi.model';
 import notify from 'devextreme/ui/notify';
-import {DxTreeListComponent, DxValidatorModule, DxValidationSummaryModule, DxFormComponent} from 'devextreme-angular';
+import { DxPopupModule, DxTreeListComponent, DxValidatorModule, DxValidationSummaryModule, DxFormComponent} from 'devextreme-angular';
 import { DxiItemComponent } from 'devextreme-angular/ui/nested/item-dxi';
 
  @Component({
@@ -24,6 +23,7 @@ import { DxiItemComponent } from 'devextreme-angular/ui/nested/item-dxi';
    @Input() addVisible;
    @Output() onHideAdd = new EventEmitter();
    @ViewChild(DxTreeListComponent) treeList: DxTreeListComponent;
+   @ViewChild(DxPopupModule) Aktif: DxPopupModule;
    @ViewChild(DxFormComponent) formAktif: DxFormComponent;
    @ViewChildren(DxiItemComponent) kontrols: QueryList<DxiItemComponent>;
    @ContentChildren(DxiItemComponent) kontens: QueryList<DxiItemComponent>;
@@ -33,12 +33,9 @@ import { DxiItemComponent } from 'devextreme-angular/ui/nested/item-dxi';
    isallowregistration: boolean;
    simpleProducts: string[];
    daftarKategori: KategoriAktif[];
-   // cekAktif: boolean;
    previousValue: boolean;
    newValue: boolean;
-
    menuTree: Menu[] = [];
-
    confVisible = false;
    isSave = false;
    isCancel = false;
@@ -62,7 +59,7 @@ import { DxiItemComponent } from 'devextreme-angular/ui/nested/item-dxi';
    }
 
    ngOnInit() {
-    if (this.isEdit || this.isDetail) {
+    if (this.isEdit) {
       const today = new Date().toISOString().slice(0, 10);
       const username = localStorage.getItem('username');
       this.misiService.getById(this.editItem).subscribe(respRole => {
@@ -72,11 +69,8 @@ import { DxiItemComponent } from 'devextreme-angular/ui/nested/item-dxi';
         this.role = {
           misi_id: respRole.d.misi_id,
           misi: respRole.d.misi,
-          //urutan: parseInt(nilai),
           urutan: respRole.d.urutan,
         };
-        // this.newValue = respRole.d.isallowregistration;
-
       })
     } else { // New Record
       this.role = {
@@ -84,42 +78,28 @@ import { DxiItemComponent } from 'devextreme-angular/ui/nested/item-dxi';
         misi: null,
         urutan: null,
       };
-
-      // this.treeList.instance.refresh();
     }
-
    }
 
    ngAfterViewInit() {
-    // console.log(this.kontrols);
     this.kontrols.forEach((item) => {
-      // console.log('name = ' + item.name + ' datafield = ' + item.dataField + ', editorType = ' + item.editorType);
     });
   }
 
   ngAfterContentInit() {
-    /*
-    this.kontrols.forEach((item) => {
-      console.log(item);
-    });
-    */
-    // this.role.isallowregistration = 1;
   }
 
   dateBox_valueChanged (e) {
     this.previousValue = e.previousValue;
     this.newValue = e.value;
     console.log('checked = ' + e.value);
-    // Event handling commands go here
   };
 
   checkBoxToggled(e) {
-    // console.log('isaktif = ' + this.role.isallowregistration);
     console.log('newvalue = ' + this.newValue);
     this.previousValue = e.previousValue;
     this.newValue = e.value;
     console.log('previousValue = ' + e.previousValue + ' newValue = ' + e.value);
-    // alert(e.value);
   }
 
    addToMenu(item) {
@@ -145,7 +125,6 @@ import { DxiItemComponent } from 'devextreme-angular/ui/nested/item-dxi';
    }
    onSaveConf() {
      this.treeList.instance.saveEditData();
-     //console.log('isdisplayed sebelum disave = ' + this.role.isdisplayed);
      const nilai: number = this.role.urutan;
      this.role.urutan = nilai.toString();
      let success = false;
@@ -175,8 +154,6 @@ import { DxiItemComponent } from 'devextreme-angular/ui/nested/item-dxi';
          });
 
          if (success) {
-           // this.options.message = 'Role saved';
-           // notify(this.options, 'success', 3000);
            notify({message: 'Misi berhasil disimpan', position: {my: 'center top', at: 'center top'}},
             'success', 3000);
            this.hide();
@@ -283,7 +260,6 @@ import { DxiItemComponent } from 'devextreme-angular/ui/nested/item-dxi';
 
        let read = 0, write = 0;
        menuChild.forEach(menu => {
-         // console.log(menu)
          if (menu.read) {
            read++;
          }

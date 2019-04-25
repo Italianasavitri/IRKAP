@@ -5,11 +5,10 @@ import {
   EventEmitter, OnInit, AfterViewInit, ViewChild, ViewChildren, QueryList, ContentChildren, AfterContentChecked, AfterContentInit
  } from '@angular/core';
 import {VisiService} from '../visi.service';
-// import { AddRoleService } from './role-add.service';
 
 import {Menu, Visi, KategoriAktif} from '../visi.model';
 import notify from 'devextreme/ui/notify';
-import {DxTreeListComponent, DxValidatorModule, DxValidationSummaryModule, DxFormComponent} from 'devextreme-angular';
+import { DxPopupModule, DxTreeListComponent, DxValidatorModule, DxValidationSummaryModule, DxFormComponent} from 'devextreme-angular';
 import { DxiItemComponent } from 'devextreme-angular/ui/nested/item-dxi';
 
  @Component({
@@ -24,6 +23,7 @@ import { DxiItemComponent } from 'devextreme-angular/ui/nested/item-dxi';
    @Input() addVisible;
    @Output() onHideAdd = new EventEmitter();
    @ViewChild(DxTreeListComponent) treeList: DxTreeListComponent;
+   @ViewChild(DxPopupModule) Aktif: DxPopupModule;
    @ViewChild(DxFormComponent) formAktif: DxFormComponent;
    @ViewChildren(DxiItemComponent) kontrols: QueryList<DxiItemComponent>;
    @ContentChildren(DxiItemComponent) kontens: QueryList<DxiItemComponent>;

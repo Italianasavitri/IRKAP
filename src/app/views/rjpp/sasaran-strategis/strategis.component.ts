@@ -197,6 +197,7 @@ export class StrategisComponent implements AfterViewInit {
     const $customButton = $('<div id="addNewRole">').dxButton({
       icon: 'add',
       text: 'Tambah Sasaran Strategis',
+      type: 'default',
       onClick: function () {
         ini.isAdd = true;
         ini.addVisible = ini.isAdd;

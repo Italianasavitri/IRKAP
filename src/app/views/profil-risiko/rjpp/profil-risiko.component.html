@@ -2,7 +2,7 @@
   <div class="card" id="new47">
 
     <div class="card-header">
-      <strong>Profil Risiko <span *ngIf="(isAdd || isEdit) && !isDetail">Add / Edit</span></strong>
+      <strong>Profil Risiko <span *ngIf="(isAdd || isEdit) && !isDetail">Profil Risiko</span></strong>
       <span *ngIf="isDetail" class="pull-right">
         <dx-button id="btnBack" text="< Back" (onClick)="back()"></dx-button>
       </span>
@@ -12,9 +12,9 @@
       <div [hidden]="isDetail || isAdd">
 
         <!-- SEARCH-->
-        <div id="form-container" style="margin-left: 20px; margin-right: 20px;">
+        <!-- <div id="form-container" style="margin-left: 20px; margin-right: 20px;"> -->
 
-          <div *ngIf="!isAdv">
+          <!-- <div *ngIf="!isAdv">
             <dx-form id="formSearch" itemType="group" sssClass="first-group" [formData]="search" [colCount]="3">
               <dxi-item dataField="risiko" [label]="{ text: 'Risiko ' }" [editorOptions]="{ disabled: false }" [colSpan]="2"></dxi-item>
               <dxi-item [colSpan]="1">
@@ -22,10 +22,10 @@
                 <dx-button icon="{{chevron}}" (onClick)="showAdvSearch()"></dx-button>
               </dxi-item>
             </dx-form>
-          </div>
+          </div> -->
 
           <!-- ADVANCED SEARCH -->
-          <div *ngIf="isAdv">
+          <!-- <div *ngIf="isAdv">
             <dx-form id="form" itemType="group" sssClass="first-group" [formData]="search" [colCount]="3">
               <dxi-item itemType="group" [colSpan]="2">
                 <dxi-item dataField="riskid" [label]="{ text: 'ID' }" editorType="dxTextBox" [editorOptions]="{ disabled: false }" [colSpan]="1"></dxi-item>
@@ -58,27 +58,44 @@
                 </dxi-item>
               </dxi-item>
             </dx-form>
-          </div>
+          </div> -->
           <!-- END ADVANCED SEARCH -->
           
-        </div>
+        <!-- </div> -->
         <!-- END SEARCH -->
 
         <!-- TABLE -->
         <div id="data-grid-demo" style="margin-top: 20px;">
 
-          <dx-data-grid id="gridContainer" [dataSource]="gridDataSource" [showRowLines]="true" [showBorders]="true" [columnHidingEnabled]="true"
-                        [rowAlternationEnabled]="true" [columnAutoWidth]="false" [wordWrapEnabled]="false">
+          <dx-data-grid id="gridContainer" 
+            [dataSource]="gridDataSource" 
+            [showRowLines]="true" 
+            [showBorders]="true" 
+            [columnHidingEnabled]="true"
+            [rowAlternationEnabled]="true"
+            [columnAutoWidth]="false" 
+            [wordWrapEnabled]="false">
+
+            <dxo-search-panel 
+              [visible]="true" 
+              [width]="240" 
+              placeholder="Search...">
+            </dxo-search-panel>
+            
             <dxo-header-filter [visible]="true"></dxo-header-filter>
             <dxo-filter-row [visible]="true"></dxo-filter-row>
             <dxo-paging [pageSize]="10"></dxo-paging>
-            <dxo-pager [showPageSizeSelector]="true" [allowedPageSizes]="[10, 20, 50]" [showInfo]="true" [showNavigationButtons]="true">
+            <dxo-pager 
+              [showPageSizeSelector]="true" 
+              [allowedPageSizes]="[10, 20, 50]" 
+              [showInfo]="true" 
+              [showNavigationButtons]="true">
             </dxo-pager>
+
             <dxo-export [enabled]="true" fileName="Profil Risiko" [allowExportSelectedData]="false"></dxo-export>
 
-            <dxi-column dataField="riskid" width="100px" caption="ID" sortOrder="asc" [allowEditing]="false"></dxi-column>
-            <dxi-column dataField="risiko" caption="Risiko" [allowEditing]="false"></dxi-column>
-            <dxi-column dataField="deskripsi" caption="Deskripsi" [allowEditing]="false"></dxi-column>
+            <dxi-column dataField="risiko" width="300px" caption="Risiko" [allowEditing]="false"></dxi-column>
+            <dxi-column dataField="deskripsi" width="700px" caption="Deskripsi" [allowEditing]="false"></dxi-column>
             <dxi-column dataField="rjppid" caption="RJPP" [allowEditing]="false"></dxi-column>
             <dxi-column dataField="sid" caption="Sasaran" [allowEditing]="false"></dxi-column>
             <dxi-column dataField="sifat" caption="Sifat" [allowEditing]="false"></dxi-column>
@@ -139,13 +156,6 @@
         <!-- end pagination -->
 
       </div>
-
-      <br>
-      
-      <tabset>
-        <tab heading="Departemen"><app-departemen></app-departemen></tab>
-        <tab heading="Plan Mitigasi"><app-plan-mitigasi></app-plan-mitigasi></tab>
-      </tabset>
 
       <div *ngIf="addVisible">
         <app-add-profil-risiko-rjpp [isEdit]="isEdit" [isDetail]="isDetail" [editItem]="target" [addVisible]="addVisible" (onHideAdd)="onHideAdd()"></app-add-profil-risiko-rjpp>

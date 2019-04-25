@@ -52,10 +52,6 @@ import {
   import { ProfilRisikoComponent } from './rkap/profil-risiko.component';
   import { AddProfilRisikoRJPPComponent } from './rjpp/add-profil-risiko/add-profil-risiko.component';
   import { AddProfilRisikoComponent } from './rkap/add-profil-risiko/add-profil-risiko.component';
-import { DepartemenComponent } from './rjpp/departemen/departemen.component';
-import { PlanMitigasiComponent } from './rjpp/plan-mitigasi/plan-mitigasi.component';
-import { AddDepertemenComponent } from './rjpp/departemen/add-depertemen/add-depertemen.component';
-import { AddPlanMitigasiComponent } from './rjpp/plan-mitigasi/add-plan-mitigasi/add-plan-mitigasi.component';
   
   @NgModule({
     imports: [
@@ -92,10 +88,6 @@ import { AddPlanMitigasiComponent } from './rjpp/plan-mitigasi/add-plan-mitigasi
       ProfilRisikoComponent,
       AddProfilRisikoRJPPComponent,
       AddProfilRisikoComponent,
-      DepartemenComponent,
-      PlanMitigasiComponent,
-      AddDepertemenComponent,
-      AddPlanMitigasiComponent
     ],
     exports: [
     ],

@@ -3,7 +3,6 @@ import {DxDataGridComponent, DxCheckBoxComponent} from 'devextreme-angular';
 import {Search} from './misi.model';
 import {MisiService} from './misi.service';
 import notify from 'devextreme/ui/notify';
-import {convertRuleOptions} from 'tslint/lib/configuration';
 
 declare const $: any;
 
@@ -28,7 +27,6 @@ export class MisiComponent implements AfterViewInit {
   progressTitle: any;
   progressContent: any;
 
-  // roles: any[];
   gridDataSource: any = {};
   search: Search;
   isDetail = false;
@@ -73,16 +71,7 @@ export class MisiComponent implements AfterViewInit {
       }
     ];
 
-    //this.misiService.getAll()
-    //.subscribe(resp => {
-    //  console.log(resp);
-    //  this.gridDataSource = resp.d.list;
-    //}, err => {
-    //  console.log(err);
-    //})
-
     this.pagination();
-    // this.getRoleData();
   }
 
   //pagination
@@ -196,7 +185,6 @@ export class MisiComponent implements AfterViewInit {
         ini.addVisible = ini.isAdd;
       }
     });
-
     d1.append($customButton[0]);
   }
 
@@ -281,11 +269,7 @@ export class MisiComponent implements AfterViewInit {
       this.text = e.itemData.text;
       if (this.text === 'Edit') {
         this.isEdit = true;
-        this.isAdd = true;
-        this.addVisible = true;
-      } else if (this.text === 'Detail') {
-        this.isDetail = true;
-        this.isAdd = true;
+        this.isAdd = false;
         this.addVisible = true;
       } else if (this.text === 'Delete') {
         this.isDelete = true;
@@ -312,7 +296,6 @@ export class MisiComponent implements AfterViewInit {
     this.confVisible = false;
     this.isDelete = false;
     this.refresh();
-    // this.getRoleData();
   }
 
   onHideProgress() {
@@ -326,7 +309,6 @@ export class MisiComponent implements AfterViewInit {
     this.isDetail = false;
     this.target = null;
     this.refresh();
-    // this.getRoleData();
   }
 
   delete() {
@@ -338,7 +320,6 @@ export class MisiComponent implements AfterViewInit {
   onDeleteConf() {
     this.misiService.getById(this.target).subscribe(role => {
       this.misiService.delete(role.d).subscribe(resp => {
-        // this.getRoleData();
         notify({
           closeOnClick: true,
           displayTime: 3000,

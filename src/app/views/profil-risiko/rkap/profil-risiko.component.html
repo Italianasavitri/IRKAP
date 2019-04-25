@@ -76,9 +76,8 @@
             </dxo-pager>
             <dxo-export [enabled]="true" fileName="Profil Risiko" [allowExportSelectedData]="false"></dxo-export>
 
-            <dxi-column dataField="riskid" width="100px" caption="ID" sortOrder="asc" [allowEditing]="false"></dxi-column>
-            <dxi-column dataField="risiko" caption="Risiko" [allowEditing]="false"></dxi-column>
-            <dxi-column dataField="deskripsi" caption="Deskripsi" [allowEditing]="false"></dxi-column>
+            <dxi-column dataField="risiko" width="300px" caption="Risiko" [allowEditing]="false"></dxi-column>
+            <dxi-column dataField="deskripsi" width="700px" caption="Deskripsi" [allowEditing]="false"></dxi-column>
             <dxi-column dataField="rjppid" caption="RJPP" [allowEditing]="false"></dxi-column>
             <dxi-column dataField="sid" caption="Sasaran" [allowEditing]="false"></dxi-column>
             <dxi-column dataField="sifat" caption="Sifat" [allowEditing]="false"></dxi-column>
@@ -137,11 +136,6 @@
         </div> 
         <!-- end pagination -->
 
-        <tabset>
-          <tab heading="Departemen"><app-departemen></app-departemen></tab>
-          <tab heading="Plan Mitigasi"><app-plan-mitigasi></app-plan-mitigasi></tab>
-        </tabset>
-        
       </div>
       <div *ngIf="addVisible">
         <app-add-profil-risiko [isEdit]="isEdit" [isDetail]="isDetail" [editItem]="target" [addVisible]="addVisible" (onHideAdd)="onHideAdd()"></app-add-profil-risiko>

@@ -27,7 +27,10 @@ import {
     DxLoadIndicatorModule,
     DxRadioGroupModule,
     DxValidatorModule,
-    DxValidationSummaryModule
+    DxValidationSummaryModule,
+    DxPopupModule,
+    DxNumberBoxModule,
+    DxResponsiveBoxModule,
   } from 'devextreme-angular';
   
   import {
@@ -76,7 +79,10 @@ import {
       DxFileUploaderModule,
       DxLoadIndicatorModule,
       DxValidatorModule,
-      DxValidationSummaryModule
+      DxValidationSummaryModule,
+      DxPopupModule,
+      DxNumberBoxModule,
+      DxResponsiveBoxModule,
       ],
     declarations: [
       //MasterAssetComponent,
