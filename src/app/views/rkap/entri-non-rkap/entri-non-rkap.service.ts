@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { HttpClient } from '@angular/common/http';
 import { AppConstant } from '../../../app.constant';
-import { Rkap, KategoriAktif } from './rkap.model';
+import { NonRkap, KategoriAktif } from './entri-non-rkap.model';
 
 const simpleProducts: string[] = [ 'Y', 'N' ];
-
-@Injectable()
-export class RkapService {
+@Injectable({
+  providedIn: 'root'
+})
+export class EntriNonRkapService {
   private resourceUrlRole = this.a.SERVER_URL + '/system/RKAP';
   private resourceUrlRoleAuth = this.a.SERVER_URL + '/role_menu_authorization';
   private resourceUrlMenu = this.a.SERVER_URL + '/menu_tab';
@@ -67,14 +68,14 @@ export class RkapService {
     })
   }
 
-  save(data: Rkap): Observable<any> {
+  save(data: NonRkap): Observable<any> {
     const username = localStorage.getItem('username');
     const token = localStorage.getItem('token');
     const today = new Date().toISOString().slice(0, 10);
     return this.http.post < any > (this.resourceUrlRole + '/insert', data)
   }
 
-  update(data: Rkap): Observable<any> {
+  update(data: NonRkap): Observable<any> {
     const username = localStorage.getItem('username');
     const token = localStorage.getItem('token');
     const today = new Date().toISOString().slice(0, 10);

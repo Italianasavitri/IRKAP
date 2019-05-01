@@ -3,7 +3,6 @@ import {DxDataGridComponent, DxCheckBoxComponent} from 'devextreme-angular';
 import {Search} from './rkap.model';
 import {RkapService} from './rkap.service';
 import notify from 'devextreme/ui/notify';
-import {convertRuleOptions} from 'tslint/lib/configuration';
 
 declare const $: any;
 
@@ -13,14 +12,6 @@ declare const $: any;
   styleUrls: ['./rkap.component.scss'],
   providers: [RkapService]
 })
-// export class RKAPComponent implements OnInit {
-
-//   constructor() { }
-
-//   ngOnInit() {
-//   }
-
-// }
 export class RKAPComponent implements AfterViewInit {
   @ViewChild(DxDataGridComponent) dataGrid: DxDataGridComponent;
 
@@ -28,6 +19,7 @@ export class RKAPComponent implements AfterViewInit {
   target: any;
   addVisible = false;
   menuVisible = false;
+  diskusiVisible = false;
   detail: any;
   text: any;
   popupVisible = false;
@@ -45,6 +37,8 @@ export class RKAPComponent implements AfterViewInit {
   isAdv = false;
   isAdd = false;
   isEdit = false;
+  isDiskusi = false;
+
   chevron = 'chevrondown';
   fakeArray: any;
   no = 0;
@@ -85,19 +79,16 @@ export class RKAPComponent implements AfterViewInit {
         disabled: false,
         beginGroup: false,
         items: false
+      },
+      {
+        text: 'Diskusi',
+        disabled: false,
+        beginGroup: false,
+        items: false
       }
     ];
 
-    //this.rkapService.getAll()
-    //.subscribe(resp => {
-    //  console.log(resp);
-    //  this.gridDataSource = resp.d.list;
-    //}, err => {
-    //  console.log(err);
-    //})
-
     this.pagination();
-    // this.getRoleData();
   }
 
     //pagination
@@ -205,7 +196,8 @@ export class RKAPComponent implements AfterViewInit {
     const d1 = this.elementRef.nativeElement.getElementsByClassName('dx-toolbar-before')[0];
     const $customButton = $('<div id="addNewRole">').dxButton({
       icon: 'add',
-      text: 'Tambah RKAP Baru',
+      text: 'Entri RKAP',
+      type: 'default',
       onClick: function () {
         ini.isAdd = true;
         ini.addVisible = ini.isAdd;
@@ -305,6 +297,9 @@ export class RKAPComponent implements AfterViewInit {
       } else if (this.text === 'Delete') {
         this.isDelete = true;
         this.confVisible = true;
+        this.isCancel = false;
+      } else if (this.text === 'Diskusi') {
+        this.diskusiVisible = true;
         this.isCancel = false;
       }
     }

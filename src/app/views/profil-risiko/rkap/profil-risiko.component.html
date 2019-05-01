@@ -2,7 +2,7 @@
   <div class="card" id="new47">
 
     <div class="card-header">
-      <strong>Profil Risiko <span *ngIf="(isAdd || isEdit) && !isDetail">Add / Edit</span></strong>
+      <strong>Profil Risiko RKAP<span *ngIf="(isAdd || isEdit) && !isDetail"></span></strong>
       <span *ngIf="isDetail" class="pull-right">
         <dx-button id="btnBack" text="< Back" (onClick)="back()"></dx-button>
       </span>
@@ -10,9 +10,12 @@
 
     <div class="card-body">
       <div [hidden]="isDetail || isAdd">
+          
+        <div class="card">
 
+        <div class="card-header">
         <!-- SEARCH-->
-        <div id="form-container" style="margin-left: 20px; margin-right: 20px;">
+        <div id="form-container" style="margin-left: 100px; margin-right: 20px;">
 
           <div *ngIf="!isAdv">
             <dx-form id="formSearch" itemType="group" sssClass="first-group" [formData]="search" [colCount]="3">
@@ -28,9 +31,6 @@
           <div *ngIf="isAdv">
             <dx-form id="form" itemType="group" sssClass="first-group" [formData]="search" [colCount]="3">
               <dxi-item itemType="group" [colSpan]="2">
-                <dxi-item dataField="riskid" [label]="{ text: 'ID' }" editorType="dxTextBox" [editorOptions]="{ disabled: false }" [colSpan]="1"></dxi-item>
-                <dxi-item dataField="risiko" [label]="{ text: 'Risiko' }" editorType="dxTextArea" [editorOptions]="{ disabled: false, height: 90 }" [colSpan]="1"></dxi-item>
-                <dxi-item dataField="deskripsi" [label]="{ text: 'Deskripsi' }" editorType="dxTextArea" [editorOptions]="{ disabled: false }" [colSpan]="1"></dxi-item>
                 <dxi-item dataField="rjppid" [label]="{ text: 'RJPP' }" editorType="dxTextBox" [editorOptions]="{ disabled: false }" [colSpan]="1"></dxi-item>
                 <dxi-item dataField="sid" [label]="{ text: 'Sasaran' }" editorType="dxTextBox" [editorOptions]="{ disabled: false }" [colSpan]="1"></dxi-item>
                 <dxi-item dataField="sifat" [label]="{ text: 'Sifat' }" editorType="dxTextBox" [editorOptions]="{ disabled: false }" [colSpan]="1"></dxi-item>
@@ -62,13 +62,28 @@
           <!-- END ADVANCED SEARCH -->
           
         </div>
+        </div>
+        </div>
         <!-- END SEARCH -->
 
         <!-- TABLE -->
         <div id="data-grid-demo" style="margin-top: 20px;">
 
-          <dx-data-grid id="gridContainer" [dataSource]="gridDataSource" [showRowLines]="true" [showBorders]="true" [columnHidingEnabled]="true"
-                        [rowAlternationEnabled]="true" [columnAutoWidth]="false" [wordWrapEnabled]="false">
+          <dx-data-grid id="gridContainer" 
+            [dataSource]="gridDataSource" 
+            [showRowLines]="true" 
+            [showBorders]="true" 
+            [columnHidingEnabled]="true"
+            [rowAlternationEnabled]="true" 
+            [columnAutoWidth]="false" 
+            [wordWrapEnabled]="false">
+
+            <dxo-search-panel 
+              [visible]="true" 
+              [width]="240" 
+              placeholder="Search...">
+            </dxo-search-panel>
+
             <dxo-header-filter [visible]="true"></dxo-header-filter>
             <dxo-filter-row [visible]="true"></dxo-filter-row>
             <dxo-paging [pageSize]="10"></dxo-paging>

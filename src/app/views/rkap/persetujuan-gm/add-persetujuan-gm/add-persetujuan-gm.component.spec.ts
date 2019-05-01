@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DocumentComponent } from './document.component';
+import { AddPersetujuanGmComponent } from './add-persetujuan-gm.component';
 
-describe('DocumentComponent', () => {
-  let component: DocumentComponent;
-  let fixture: ComponentFixture<DocumentComponent>;
+describe('AddPersetujuanGmComponent', () => {
+  let component: AddPersetujuanGmComponent;
+  let fixture: ComponentFixture<AddPersetujuanGmComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DocumentComponent ]
+      declarations: [ AddPersetujuanGmComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DocumentComponent);
+    fixture = TestBed.createComponent(AddPersetujuanGmComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

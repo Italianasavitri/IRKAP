@@ -1,4 +1,4 @@
-export class Rkap {
+export class PersetujuanGm {
     rjppid: number;
     sid: number;
     prkid: number;
@@ -70,7 +70,7 @@ export class Menu {
   export class Search {
     rjppid: string;
     sid: string;
-    codeid: string;
+    prkid: string;
     rkapid: string;
   }
   

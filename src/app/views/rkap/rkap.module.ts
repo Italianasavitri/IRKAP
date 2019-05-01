@@ -62,12 +62,10 @@ import {
   import { PaguAnggaranComponent } from './pagu-anggaran/pagu-anggaran.component';
   import { EntriRealisasiComponent } from './entri-realisasi/entri-realisasi.component';
   import { AddPaguAnggaranComponent } from './pagu-anggaran/add-pagu-anggaran/add-pagu-anggaran.component';
-import { IndikatorInputComponent } from './rkap/add-rkap/indikator-input/indikator-input.component';
-import { IndikatorOutputComponent } from './rkap/add-rkap/indikator-output/indikator-output.component';
-import { DocumentComponent } from './rkap/add-rkap/document/document.component';
-import { RabComponent } from './rkap/add-rkap/rab/rab.component';
-import { InputRkapComponent } from './rkap/add-rkap/input-rkap/input-rkap.component';
-import { PersetujuanMrComponent } from './persetujuan-mr/persetujuan-mr.component';
+  import { PersetujuanMrComponent } from './persetujuan-mr/persetujuan-mr.component';
+import { AddNonRkapComponent } from './entri-non-rkap/add-non-rkap/add-non-rkap.component';
+import { AddPersetujuanGmComponent } from './persetujuan-gm/add-persetujuan-gm/add-persetujuan-gm.component';
+import { DiskusiComponent } from './rkap/diskusi/diskusi.component';
 
   @NgModule({
     imports: [
@@ -90,7 +88,8 @@ import { PersetujuanMrComponent } from './persetujuan-mr/persetujuan-mr.componen
       DxFileUploaderModule,
       DxLoadIndicatorModule,
       DxValidatorModule,
-      DxValidationSummaryModule
+      DxValidationSummaryModule,
+      DxFileUploaderModule
       ],
     declarations: [
       //MasterAssetComponent,
@@ -114,12 +113,10 @@ import { PersetujuanMrComponent } from './persetujuan-mr/persetujuan-mr.componen
       PaguAnggaranComponent,
       EntriRealisasiComponent,
       AddPaguAnggaranComponent,
-      IndikatorInputComponent,
-      IndikatorOutputComponent,
-      DocumentComponent,
-      RabComponent,
-      InputRkapComponent,
-      PersetujuanMrComponent
+      PersetujuanMrComponent,
+      AddNonRkapComponent,
+      AddPersetujuanGmComponent,
+      DiskusiComponent
     ],
     exports: [
     ],

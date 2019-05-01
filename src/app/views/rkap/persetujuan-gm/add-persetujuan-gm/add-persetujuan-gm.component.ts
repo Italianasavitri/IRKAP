@@ -4,22 +4,20 @@ import {
   Output,
   EventEmitter, OnInit, AfterViewInit, ViewChild, ViewChildren, QueryList, ContentChildren, AfterContentChecked, AfterContentInit
  } from '@angular/core';
-import {RkapService} from '../rkap.service';
+import {PersetujuanGmService} from '../persetujuan-gm.service';
 
-import {Menu, Rkap, KategoriAktif, IndikatorInput, IndikatorOutput, Rab, DokumenRkap} from '../rkap.model';
+import {Menu, PersetujuanGm, KategoriAktif, IndikatorInput, IndikatorOutput, Rab, DokumenRkap} from '../persetujuan-gm.model';
 import notify from 'devextreme/ui/notify';
 import {DxTreeListComponent, DxValidatorModule, DxValidationSummaryModule, DxFormComponent} from 'devextreme-angular';
 import { DxiItemComponent } from 'devextreme-angular/ui/nested/item-dxi';
 import { MatButtonToggleGroupMultiple } from '@angular/material';
 
-
 @Component({
-  selector: 'app-add-rkap',
-  templateUrl: './add-rkap.component.html',
+  selector: 'app-add-persetujuan-gm',
+  templateUrl: './add-persetujuan-gm.component.html',
   providers: []
 })
-
-export class AddRKAPComponent implements OnInit, AfterViewInit, AfterContentInit {
+export class AddPersetujuanGmComponent implements OnInit, AfterViewInit, AfterContentInit {
   @Input() isEdit;
   @Input() isDetail;
   @Input() editItem;
@@ -31,7 +29,7 @@ export class AddRKAPComponent implements OnInit, AfterViewInit, AfterContentInit
   @ContentChildren(DxiItemComponent) kontens: QueryList<DxiItemComponent>;
 
   //model
-  role: Rkap;
+  role: PersetujuanGm;
   indikatorInput: IndikatorInput;
   indikatorOutput: IndikatorOutput;
   rab: Rab;
@@ -62,7 +60,7 @@ export class AddRKAPComponent implements OnInit, AfterViewInit, AfterContentInit
     closeOnBackButton: true,
   };
 
-  constructor(private rkapService: RkapService) {
+  constructor(private rkapService: PersetujuanGmService) {
     this.simpleProducts = rkapService.getSimpleProducts();
 
     this.rkapService.getRjpp().subscribe(resp=>{

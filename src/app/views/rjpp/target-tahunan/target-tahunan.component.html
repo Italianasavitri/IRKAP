@@ -8,43 +8,23 @@
     </div>
     <div class="card-body">
       <div [hidden]="isDetail || isAdd">
-        <div id="form-container" style="margin-left: 20px; margin-right: 20px;">
-          <div *ngIf="!isAdv">
-            <dx-form id="formSearch" itemType="group" sssClass="first-group" [formData]="search" [colCount]="3">
-              <dxi-item dataField="indikator" caption="Indikator" [editorOptions]="{ disabled: false }" [colSpan]="2"></dxi-item>
-              <dxi-item [colSpan]="1">
-                <dx-button icon="search" text="Search" (onClick)="searching()"></dx-button>
-                <dx-button icon="{{chevron}}" (onClick)="showAdvSearch()"></dx-button>
-              </dxi-item>
-            </dx-form>
-          </div>
-          <!-- ADVANCED SEARCH -->
-          <div *ngIf="isAdv">
-            <dx-form id="form" itemType="group" sssClass="first-group" [formData]="search" [colCount]="3">
-              <dxi-item itemType="group" [colSpan]="1">
-                <dxi-item dataField="tid" [editorOptions]="{ disabled: false }" [colSpan]="1"></dxi-item>
-                <dxi-item dataField="tahun" [editorOptions]="{ disabled: false }" [colSpan]="1"></dxi-item>
-                <dxi-item dataField="rjppid" [editorOptions]="{ disabled: false }" [colSpan]="1"></dxi-item>
-                <dxi-item dataField="sid" [editorOptions]="{ disabled: false }" [colSpan]="1"></dxi-item>
-                <dxi-item dataField="indikator" [editorOptions]="{ disabled: false }" [colSpan]="1"></dxi-item>
-                <dxi-item dataField="indikator_nilai" [editorOptions]="{ disabled: false }" [colSpan]="1"></dxi-item>
-                <dxi-item dataField="indikator_satuan" [editorOptions]="{ disabled: false }" [colSpan]="1"></dxi-item>
-                <!--<dxi-item dataField="menu" [editorOptions]="{ disabled: false }" [colSpan]="1"></dxi-item>-->
-              </dxi-item>
-              <dxi-item itemType="group">
-                <dxi-item [colSpan]="1">
-                  <dx-button icon="search" text="Search" (onClick)="advSearch()"></dx-button>
-                  <dx-button icon="{{chevron}}" (onClick)="showAdvSearch()"></dx-button>
-                </dxi-item>
-              </dxi-item>
-            </dx-form>
-          </div>
-          <!-- END ADVANCED SEARCH -->
-        </div>
 
         <div id="data-grid-demo" style="margin-top: 20px;">
-          <dx-data-grid id="gridContainer" [dataSource]="gridDataSource" [showRowLines]="true" [showBorders]="true" [columnHidingEnabled]="false"
-                        [rowAlternationEnabled]="true" [columnAutoWidth]="true" [wordWrapEnabled]="true">
+          <dx-data-grid id="gridContainer" 
+            [dataSource]="gridDataSource" 
+            [showRowLines]="true" 
+            [showBorders]="true" 
+            [columnHidingEnabled]="false"
+            [rowAlternationEnabled]="true" 
+            [columnAutoWidth]="true" 
+            [wordWrapEnabled]="true">
+
+            <dxo-search-panel 
+            [visible]="true" 
+            [width]="240" 
+            placeholder="Search...">
+            </dxo-search-panel>
+            
             <dxo-header-filter [visible]="true"></dxo-header-filter>
             <dxo-filter-row [visible]="true"></dxo-filter-row>
             <dxo-paging [pageSize]="10"></dxo-paging>
@@ -52,7 +32,6 @@
             </dxo-pager>
             <dxo-export [enabled]="true" fileName="Target Tahunan" [allowExportSelectedData]="false"></dxo-export>
 
-            <dxi-column dataField="tid" caption="Tahun Id" sortOrder="asc" [allowEditing]="false"></dxi-column>
             <dxi-column dataField="tahun" caption="Tahun" [allowEditing]="false"></dxi-column>
             <dxi-column dataField="rjppid" caption="RJPP" [allowEditing]="false"></dxi-column>
             <dxi-column dataField="sid" caption="Sasaran" [allowEditing]="false"></dxi-column>

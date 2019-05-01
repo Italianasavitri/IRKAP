@@ -1,4 +1,4 @@
-export class Rkap {
+export class NonRkap {
     rjppid: number;
     sid: number;
     prkid: number;

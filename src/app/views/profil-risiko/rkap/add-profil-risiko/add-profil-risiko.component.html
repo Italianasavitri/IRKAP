@@ -1,55 +1,53 @@
 <div *ngIf="addVisible">
   <form action="Submit" (submit)="save($event)">
 
-    <dx-button *ngIf="!isDetail" icon="fa fa-ban" text="Cancel" type="danger" (onClick)="cancel()"></dx-button>
-    <dx-button *ngIf="!isDetail" class="pull-right" icon="fa fa-save" text="Save" type="success" validationGroup="roleData" [useSubmitBehavior]="true"></dx-button>
-
-    <!-- class="m-2" => add margin by 0.5rem -->
-    <div class="m-2"></div>
-    <p style="border-top: 1px rgb(196, 196, 196) solid; padding: 0px; margin: 0px;"></p>
-    <div class="m-2"></div>
-
-    <dx-form [(formData)]="role" validationGroup="roleData">
-      <dxi-item itemType="group" [colCount]="2">
+    <dx-form [(formData)]="role" validationGroup="roleData" style="margin-left:100px; margin-right: 100px; margin-bottom: 30px;">
+        <dxi-item itemType="group" [colCount]="1">
         <dxi-item itemType="group">
-          <!-- <dxi-item name="txtRoleID" dataField="riskid" caption="ID" editorType="dxTextBox" [editorOptions]="{readOnly: true}"></dxi-item> -->
-          <dxi-item name="txtRisiko" dataField="risiko" caption="Risiko" editorType="dxTextArea" [editorOptions]="{readOnly: isDetail, height: 90}" [validationRules]="[{type: 'required', message: 'Risiko harus diisi' }]"></dxi-item>
-          <dxi-item name="txtDeskripsi" dataField="deskripsi" caption="Deskripsi" editorType="dxTextBox" [editorOptions]="{readOnly: isDetail}" [validationRules]="[{type: 'required', message: 'Deskripsi harus diisi' }]"></dxi-item>
-          <!-- <dxi-item name="txtKeterangan" dataField="rjppid" caption="RJPP" editorType="dxTextBox" [editorOptions]="{readOnly: isDetail}" [validationRules]="[{type: 'required', message: 'RJPP harus diisi' }]"></dxi-item> -->
-          <!-- <dxi-item name="rjpp" dataField="rjppid" [label]="{ text: 'RJPP' }" editorType="dxSelectBox"  placeholder="--Periode RJPP--" [editorOptions]="{readOnly: isDetail, dataSource: Rjpp}" [validationRules]="[{type: 'required', message: 'RJPP harus diisi' }]" ></dxi-item> -->
-          <!-- <dxi-item name="txtKeterangan" dataField="sid" caption="Sasaran" editorType="dxTextBox" [editorOptions]="{readOnly: isDetail}" [validationRules]="[{type: 'required', message: 'Sasaran harus diisi' }]"></dxi-item> -->
-          <dxi-item name="cboRjpp" dataField="rjppid" editorType="dxSelectBox" [label]="{ text: 'RJPP' }" [editorOptions]="{readOnly: isDetail, items: daftarRjpp, displayExpr: 'periode', valueExpr: 'rjppid' }" [validationRules]="[{type: 'required', message: 'Display harus dipilih' }]" ></dxi-item>
-          <!-- <dxi-item name="sasaran" dataField="sid" [label]="{ text: 'Sasaran' }" editorType="dxSelectBox"  placeholder="--Jenis Sasaran--" [editorOptions]="{readOnly: isDetail, dataSource: Sasaran}" [validationRules]="[{type: 'required', message: 'Sasaran harus diisi' }]" ></dxi-item> -->
+          <dxi-item name="txtRisiko" dataField="risiko" [label]="{ text: 'Risiko' }" editorType="dxTextBox" [editorOptions]="{readOnly: isDetail}" [validationRules]="[{type: 'required', message: 'Risiko harus diisi' }]"></dxi-item>
+          <dxi-item name="cboRjpp" dataField="rjppid" editorType="dxSelectBox" [label]="{ text: 'Periode RJPP' }" [editorOptions]="{readOnly: isDetail, items: daftarRjpp, displayExpr: 'periode', valueExpr: 'rjppid' }" [validationRules]="[{type: 'required', message: 'Display harus dipilih' }]" ></dxi-item>
           <dxi-item name="cboSasaran" dataField="sid" editorType="dxSelectBox" [label]="{ text: 'Sasaran' }" [editorOptions]="{readOnly: isDetail, items: daftarSasaran, displayExpr: 'sasaran', valueExpr: 'sid' }" [validationRules]="[{type: 'required', message: 'Display harus dipilih' }]" ></dxi-item>
+        </dxi-item>
+        </dxi-item>
+        <dxi-item itemType="group" [colCount]="2">
+          <dxi-item itemType="group">
+          <dxi-item name="tahun" dataField="tahun" [colCount]="2" [label]="{ text: 'Tahun' }" editorType="dxSelectBox"  placeholder="--Tahun--" [editorOptions]="{readOnly: isDetail, dataSource: Tahun}" [validationRules]="[{type: 'required', message: 'Tahun harus diisi' }]" ></dxi-item>
+          </dxi-item>
+        </dxi-item>
+        <dxi-item itemType="group" [colCount]="1">
+          <dxi-item itemType="group">
+          <dxi-item name="txtDeskripsi" dataField="deskripsi" caption="Deskripsi" editorType="dxTextArea" [editorOptions]="{readOnly: isDetail, height: 90}" [validationRules]="[{type: 'required', message: 'Deskripsi harus diisi' }]"></dxi-item>
+          <dxi-item name="txtMitigasi" dataField="mitigasi" caption="Mitigasi" editorType="dxTextBox" [editorOptions]="{readOnly: isDetail}" [validationRules]="[{type: 'required', message: 'Mitigasi harus diisi' }]"></dxi-item>
           <dxi-item name="txtSifat" dataField="sifat" caption="Sifat" editorType="dxTextBox" [editorOptions]="{readOnly: isDetail}" [validationRules]="[{type: 'required', message: 'Sifat harus diisi' }]"></dxi-item>
           <dxi-item name="txtJenis" dataField="jenis" caption="Jenis" editorType="dxTextBox" [editorOptions]="{readOnly: isDetail}" [validationRules]="[{type: 'required', message: 'Jenis harus diisi' }]"></dxi-item>
-          <dxi-item name="txtDirekturTerkait" dataField="direktur_terkait" caption="Direktur Terkait" editorType="dxNumberBox" [editorOptions]="{readOnly: isDetail}" [validationRules]="[{type: 'required', message: 'Direktur Terkait harus diisi' }]"></dxi-item>
+          <dxi-item name="txtDrktrTerkait" dataField="direktur_terkait" caption="Direktur Terkait" editorType="dxNumberBox" [editorOptions]="{readOnly: isDetail}" [validationRules]="[{type: 'required', message: 'Direktur Terkait harus diisi' }]"></dxi-item>
+        </dxi-item>
+        <dxi-item itemType="group" [colCount]="2">
+            <dxi-item itemType="group">
+              <dxi-item name="txtPenyebabInternal" dataField="penyebab_interna" [label]="{ text: 'Penyebab Internal' }" editorType="dxTextArea" [editorOptions]="{readOnly: isDetail, height: 120}" [validationRules]="[{type: 'required', message: 'Penyebab Internal harus diisi' }]"></dxi-item>
+              <dxi-item name="txtPenyebabEksternal" dataField="penyebab_eksternal" [label]="{ text: 'Penyebab Eksternal' }" editorType="dxTextArea" [editorOptions]="{readOnly: isDetail, height: 120}" [validationRules]="[{type: 'required', message: 'Penyebab Eksternal harus diisi' }]"></dxi-item>
+              <dxi-item name="cboTaksonomi" dataField="taxoid" editorType="dxSelectBox" [label]="{ text: 'Taksonomi' }" [editorOptions]="{readOnly: isDetail, items: daftarTaksonomi, displayExpr: 'taksonomi', valueExpr: 'taxoid' }" [validationRules]="[{type: 'required', message: 'Display harus dipilih' }]" ></dxi-item>
+              <dxi-item name="cboDepartement" dataField="deptid" editorType="dxSelectBox" [label]="{ text: 'Departement' }" [editorOptions]="{readOnly: isDetail, items: daftarDepartemen, displayExpr: 'dept_name', valueExpr: 'deptid' }" [validationRules]="[{type: 'required', message: 'Display harus dipilih' }]" ></dxi-item>
+            </dxi-item>
+            <dxi-item itemType="group">
+              <dxi-item name="txtJustifikasiDampak" dataField="justifikasi_dampak" caption="Justifikasi Dampak" editorType="dxTextArea" [editorOptions]="{readOnly: isDetail, height: 120}" [validationRules]="[{type: 'required', message: 'Justifikasi Dampak harus diisi' }]"></dxi-item>
+              <dxi-item name="txtJustifikasiKemungkinan" dataField="justifikasi_kemungkinan" caption="Justifikasi Kemungkinan" editorType="dxTextArea" [editorOptions]="{readOnly: isDetail, height: 120}" [validationRules]="[{type: 'required', message: 'Justifikasi Kemungkinan harus diisi' }]"></dxi-item>
+            </dxi-item>
+          </dxi-item>
+        <dxi-item itemType="group" [colCount]="1">
           <dxi-item name="txtTingkat" dataField="tingkat" caption="Tingkat" editorType="dxTextBox" [editorOptions]="{readOnly: isDetail}" [validationRules]="[{type: 'required', message: 'Tingkat harus diisi' }]"></dxi-item>
           <dxi-item name="txtDampak" dataField="dampak" caption="Dampak" editorType="dxTextBox" [editorOptions]="{readOnly: isDetail}" [validationRules]="[{type: 'required', message: 'Dampak harus diisi' }]"></dxi-item>
           <dxi-item name="txtKemungkinan" dataField="kemungkinan" caption="Kemungkinan" editorType="dxTextBox" [editorOptions]="{readOnly: isDetail}" [validationRules]="[{type: 'required', message: 'Kemungkinan harus diisi' }]"></dxi-item>
-          </dxi-item>
-        <dxi-item itemType="group">
           <dxi-item name="txtVelositas" dataField="velositas" caption="Velositas" editorType="dxTextBox" [editorOptions]="{readOnly: isDetail}" [validationRules]="[{type: 'required', message: 'Velositas harus diisi' }]"></dxi-item>
-          <dxi-item name="txtPenyebabInternal" dataField="penyebab_interna" [label]="{ text: 'Penyebab Internal' }" editorType="dxTextBox" [editorOptions]="{readOnly: isDetail}" [validationRules]="[{type: 'required', message: 'Penyebab Internal harus diisi' }]"></dxi-item>
-          <dxi-item name="txtPenyebabEksternal" dataField="penyebab_eksternal" caption="Penyebab Eksternal" editorType="dxTextBox" [editorOptions]="{readOnly: isDetail}" [validationRules]="[{type: 'required', message: 'Penyebab Eksternal harus diisi' }]"></dxi-item>
           <dxi-item name="txtTipeRisiko" dataField="tipe_risiko" caption="Tipe Risiko" editorType="dxTextBox" [editorOptions]="{readOnly: isDetail}" [validationRules]="[{type: 'required', message: 'Tipe Risiko harus diisi' }]"></dxi-item>
-          <dxi-item name="txtJustifikasiDampak" dataField="justifikasi_dampak" caption="Justifikasi Dampak" editorType="dxTextBox" [editorOptions]="{readOnly: isDetail}" [validationRules]="[{type: 'required', message: 'Justifikasi Dampak harus diisi' }]"></dxi-item>
-          <dxi-item name="txtJustifikasiKemungkinan" dataField="justifikasi_kemungkinan" caption="Justifikasi Kemungkinan" editorType="dxTextBox" [editorOptions]="{readOnly: isDetail}" [validationRules]="[{type: 'required', message: 'Justifikasi Kemungkinan harus diisi' }]"></dxi-item>
-          <dxi-item name="txtMitigasi" dataField="mitigasi" caption="Mitigasi" editorType="dxTextBox" [editorOptions]="{readOnly: isDetail}" [validationRules]="[{type: 'required', message: 'Mitigasi harus diisi' }]"></dxi-item>
-          <dxi-item name="cboTaksonomi" dataField="taxoid" editorType="dxSelectBox" [label]="{ text: 'Taksonomi' }" [editorOptions]="{readOnly: isDetail, items: daftarTaksonomi, displayExpr: 'taksonomi', valueExpr: 'taxoid' }" [validationRules]="[{type: 'required', message: 'Display harus dipilih' }]" ></dxi-item>
-          <!-- <dxi-item name="txtTaksonomi" dataField="taxoid" caption="Risk Taksonomi" editorType="dxTextBox" [editorOptions]="{readOnly: isDetail}" [validationRules]="[{type: 'required', message: 'Risk Taksonomi harus diisi' }]"></dxi-item> -->
-          <!-- <dxi-item name="txtKeterangan" dataField="tahun" caption="Tahun" editorType="dxTextBox" [editorOptions]="{readOnly: isDetail}" [validationRules]="[{type: 'required', message: 'Tahun harus diisi' }]"></dxi-item> -->
-          <dxi-item name="tahun" dataField="tahun" [label]="{ text: 'Tahun' }" editorType="dxSelectBox"  placeholder="--Tahun--" [editorOptions]="{readOnly: isDetail, dataSource: Tahun}" [validationRules]="[{type: 'required', message: 'Tahun harus diisi' }]" ></dxi-item>
-          <dxi-item name="cboDepartement" dataField="deptid" editorType="dxSelectBox" [label]="{ text: 'Departement' }" [editorOptions]="{readOnly: isDetail, items: daftarDepartemen, displayExpr: 'dept_name', valueExpr: 'deptid' }" [validationRules]="[{type: 'required', message: 'Display harus dipilih' }]" ></dxi-item>
-          <!-- <dxi-item name="txtDepartement" dataField="deptid" caption="Departements" editorType="dxTextBox" [editorOptions]="{readOnly: isDetail}" [validationRules]="[{type: 'required', message: 'Departements harus diisi' }]"></dxi-item> -->
-        </dxi-item>
-        <dxi-item itemType="group">
-          <dxi-item itemType="empty"></dxi-item>
         </dxi-item>
       </dxi-item>
     </dx-form>
 
-
+    <dx-button *ngIf="!isDetail" icon="fa fa-ban" text="Cancel" type="danger" (onClick)="cancel()"></dx-button>
+    <dx-button *ngIf="!isDetail" class="pull-right" icon="fa fa-save" text="Save" type="success" validationGroup="roleData" [useSubmitBehavior]="true"></dx-button>
+    
+    <br>
     <br>
     <!-- <p>Menu Access :</p> -->
     <dx-tree-list

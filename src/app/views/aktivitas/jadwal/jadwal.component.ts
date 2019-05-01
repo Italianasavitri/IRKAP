@@ -15,7 +15,7 @@
 // }
 import {AfterViewInit, Component, ElementRef, Inject, ViewChild} from '@angular/core';
 import {DxDataGridComponent, DxCheckBoxComponent} from 'devextreme-angular';
-import {Search} from './jadwal.model';
+import {Appointment, Search} from './jadwal.model';
 import {JadwalService} from './jadwal.service';
 import notify from 'devextreme/ui/notify';
 import {convertRuleOptions} from 'tslint/lib/configuration';
@@ -30,6 +30,7 @@ declare const $: any;
 })
 export class JadwalComponent implements AfterViewInit {
   @ViewChild(DxDataGridComponent) dataGrid: DxDataGridComponent;
+  appointmentsData: Appointment[];
 
   contextItems: any;
   target: any;

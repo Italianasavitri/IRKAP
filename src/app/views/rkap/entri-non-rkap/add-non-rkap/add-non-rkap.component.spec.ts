@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { IndikatorOutputComponent } from './indikator-output.component';
+import { AddNonRkapComponent } from './add-non-rkap.component';
 
-describe('IndikatorOutputComponent', () => {
-  let component: IndikatorOutputComponent;
-  let fixture: ComponentFixture<IndikatorOutputComponent>;
+describe('AddNonRkapComponent', () => {
+  let component: AddNonRkapComponent;
+  let fixture: ComponentFixture<AddNonRkapComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ IndikatorOutputComponent ]
+      declarations: [ AddNonRkapComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(IndikatorOutputComponent);
+    fixture = TestBed.createComponent(AddNonRkapComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -27,7 +27,8 @@ import {
     DxLoadIndicatorModule,
     DxRadioGroupModule,
     DxValidatorModule,
-    DxValidationSummaryModule
+    DxValidationSummaryModule,
+    DxSchedulerModule,
   } from 'devextreme-angular';
   
   import {
@@ -74,7 +75,8 @@ import { AddJadwalComponent } from './jadwal/add-jadwal/add-jadwal.component';
       DxFileUploaderModule,
       DxLoadIndicatorModule,
       DxValidatorModule,
-      DxValidationSummaryModule
+      DxValidationSummaryModule,
+      DxSchedulerModule,
       ],
     declarations: [
       //MasterAssetComponent,

@@ -2,7 +2,7 @@
   <div class="card" id="new47">
 
     <div class="card-header">
-      <strong>Profil Risiko <span *ngIf="(isAdd || isEdit) && !isDetail">Profil Risiko</span></strong>
+      <strong>Profil Risiko RJPP<span *ngIf="(isAdd || isEdit) && !isDetail"></span></strong>
       <span *ngIf="isDetail" class="pull-right">
         <dx-button id="btnBack" text="< Back" (onClick)="back()"></dx-button>
       </span>
@@ -12,9 +12,12 @@
       <div [hidden]="isDetail || isAdd">
 
         <!-- SEARCH-->
-        <!-- <div id="form-container" style="margin-left: 20px; margin-right: 20px;"> -->
+        <div class="card">
 
-          <!-- <div *ngIf="!isAdv">
+        <div class="card-header">
+        <div id="form-container" style="margin-left: 100px; margin-right: 20px;">
+
+          <div *ngIf="!isAdv">
             <dx-form id="formSearch" itemType="group" sssClass="first-group" [formData]="search" [colCount]="3">
               <dxi-item dataField="risiko" [label]="{ text: 'Risiko ' }" [editorOptions]="{ disabled: false }" [colSpan]="2"></dxi-item>
               <dxi-item [colSpan]="1">
@@ -22,15 +25,13 @@
                 <dx-button icon="{{chevron}}" (onClick)="showAdvSearch()"></dx-button>
               </dxi-item>
             </dx-form>
-          </div> -->
+          </div>
 
           <!-- ADVANCED SEARCH -->
-          <!-- <div *ngIf="isAdv">
+          <div *ngIf="isAdv">
             <dx-form id="form" itemType="group" sssClass="first-group" [formData]="search" [colCount]="3">
               <dxi-item itemType="group" [colSpan]="2">
-                <dxi-item dataField="riskid" [label]="{ text: 'ID' }" editorType="dxTextBox" [editorOptions]="{ disabled: false }" [colSpan]="1"></dxi-item>
-                <dxi-item dataField="risiko" [label]="{ text: 'Risiko' }" editorType="dxTextArea" [editorOptions]="{ disabled: false, height: 90 }" [colSpan]="1"></dxi-item>
-                <dxi-item dataField="deskripsi" [label]="{ text: 'Deskripsi' }" editorType="dxTextArea" [editorOptions]="{ disabled: false }" [colSpan]="1"></dxi-item>
+
                 <dxi-item dataField="rjppid" [label]="{ text: 'RJPP' }" editorType="dxTextBox" [editorOptions]="{ disabled: false }" [colSpan]="1"></dxi-item>
                 <dxi-item dataField="sid" [label]="{ text: 'Sasaran' }" editorType="dxTextBox" [editorOptions]="{ disabled: false }" [colSpan]="1"></dxi-item>
                 <dxi-item dataField="sifat" [label]="{ text: 'Sifat' }" editorType="dxTextBox" [editorOptions]="{ disabled: false }" [colSpan]="1"></dxi-item>
@@ -58,10 +59,12 @@
                 </dxi-item>
               </dxi-item>
             </dx-form>
-          </div> -->
+          </div>
           <!-- END ADVANCED SEARCH -->
           
-        <!-- </div> -->
+        </div>
+        </div>
+        </div>
         <!-- END SEARCH -->
 
         <!-- TABLE -->
@@ -71,6 +74,7 @@
             [dataSource]="gridDataSource" 
             [showRowLines]="true" 
             [showBorders]="true" 
+            [allowColumnResizing]="true"
             [columnHidingEnabled]="true"
             [rowAlternationEnabled]="true"
             [columnAutoWidth]="false" 

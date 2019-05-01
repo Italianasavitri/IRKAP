@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { IndikatorInputComponent } from './indikator-input.component';
+import { DiskusiComponent } from './diskusi.component';
 
-describe('IndikatorInputComponent', () => {
-  let component: IndikatorInputComponent;
-  let fixture: ComponentFixture<IndikatorInputComponent>;
+describe('DiskusiComponent', () => {
+  let component: DiskusiComponent;
+  let fixture: ComponentFixture<DiskusiComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ IndikatorInputComponent ]
+      declarations: [ DiskusiComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(IndikatorInputComponent);
+    fixture = TestBed.createComponent(DiskusiComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

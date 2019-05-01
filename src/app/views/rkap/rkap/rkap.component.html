@@ -3,9 +3,9 @@
 
     <!-- Card Header -->
     <div class="card-header">
-      <strong>RKAP <span *ngIf="(isAdd || isEdit) && !isDetail">Add / Edit</span></strong>
+      <strong>RKAP <span *ngIf="(isAdd || isEdit) && !isDetail"></span></strong>
       <span *ngIf="isDetail" class="pull-right">
-        <dx-button id="btnBack" text="< Back" (onClick)="back()"></dx-button>
+        <dx-button id="btnBack" text="Back" (onClick)="back()"></dx-button>
       </span>
     </div>
     <!-- End Card Header -->
@@ -14,152 +14,43 @@
     <div class="card-body">
       <div [hidden]="isDetail || isAdd">
 
-        <div id="form-container" style="margin-left: 20px; margin-right: 20px;">
-
-          <!-- Search -->
-          <div *ngIf="!isAdv">
-            <dx-form id="formSearch" itemType="group" sssClass="first-group" [formData]="search" [colCount]="3">
-              <dxi-item dataField="rkapid" caption="Nama" [editorOptions]="{ disabled: false }" [colSpan]="2"></dxi-item>
-              <dxi-item [colSpan]="1">
-                <dx-button icon="search" text="Search" (onClick)="searching()"></dx-button>
-                <dx-button icon="{{chevron}}" (onClick)="showAdvSearch()"></dx-button>
-              </dxi-item>
-            </dx-form>
-          </div>
-          <!-- End Search -->
-
-          <!-- ADVANCED SEARCH -->
-          <div *ngIf="isAdv">
-            <dx-form id="form" itemType="group" sssClass="first-group" [formData]="search" [colCount]="3">
-              <dxi-item itemType="group" [colSpan]="2">
-                <dxi-item dataField="rkapid" [editorOptions]="{ disabled: false }" [colSpan]="1"></dxi-item>
-              <dxi-item dataField="rjppid" [editorOptions]="{ disabled: false }" [colSpan]="1"></dxi-item>
-              <dxi-item dataField="sid" [editorOptions]="{ disabled: false }" [colSpan]="1"></dxi-item>
-              <dxi-item dataField="prkid" [editorOptions]="{ disabled: false }" [colSpan]="1"></dxi-item>
-              <dxi-item dataField="no_prk" [editorOptions]="{ disabled: false }" [colSpan]="1"></dxi-item>
-              <dxi-item dataField="program_kerja" [editorOptions]="{ disabled: false }" [colSpan]="1"></dxi-item>
-              <dxi-item dataField="deskripsi" [editorOptions]="{ disabled: false }" [colSpan]="1"></dxi-item>
-              <dxi-item dataField="jenis_anggaran" [editorOptions]="{ disabled: false }" [colSpan]="1"></dxi-item>
-              <dxi-item dataField="tipe_rkap" [editorOptions]="{ disabled: false }" [colSpan]="1"></dxi-item>
-              <dxi-item dataField="no_kontrak_existing" [editorOptions]="{ disabled: false }" [colSpan]="1"></dxi-item>
-              <dxi-item dataField="tgl_akhir_kontrak" [editorOptions]="{ disabled: false }" [colSpan]="1"></dxi-item>
-              <dxi-item dataField="nilai_kontrak" [editorOptions]="{ disabled: false }" [colSpan]="1"></dxi-item>
-              <dxi-item dataField="usulan_anggaran" [editorOptions]="{ disabled: false }" [colSpan]="1"></dxi-item>
-              <dxi-item dataField="gid" [editorOptions]="{ disabled: false }" [colSpan]="1"></dxi-item>
-              <dxi-item dataField="prioritas" [editorOptions]="{ disabled: false }" [colSpan]="1"></dxi-item>
-              <dxi-item dataField="tgl_usulan" [editorOptions]="{ disabled: false }" [colSpan]="1"></dxi-item>
-              <dxi-item dataField="usulan_oleh" [editorOptions]="{ disabled: false }" [colSpan]="1"></dxi-item>
-              <dxi-item dataField="tgl_update" [editorOptions]="{ disabled: false }" [colSpan]="1"></dxi-item>
-              <dxi-item dataField="update_by" [editorOptions]="{ disabled: false }" [colSpan]="1"></dxi-item>
-              <dxi-item dataField="deleted_date" [editorOptions]="{ disabled: false }" [colSpan]="1"></dxi-item>
-              <dxi-item dataField="deleted_by" [editorOptions]="{ disabled: false }" [colSpan]="1"></dxi-item>
-              <dxi-item dataField="tgl_approve_gm" [editorOptions]="{ disabled: false }" [colSpan]="1"></dxi-item>
-              <dxi-item dataField="approved_by" [editorOptions]="{ disabled: false }" [colSpan]="1"></dxi-item>
-              <dxi-item dataField="tgl_review_renko" [editorOptions]="{ disabled: false }" [colSpan]="1"></dxi-item>
-              <dxi-item dataField="review_renko_by" [editorOptions]="{ disabled: false }" [colSpan]="1"></dxi-item>
-              <dxi-item dataField="tgl_review_risk" [editorOptions]="{ disabled: false }" [colSpan]="1"></dxi-item>
-              <dxi-item dataField="risk_review_by" [editorOptions]="{ disabled: false }" [colSpan]="1"></dxi-item>
-              <dxi-item dataField="no_io" [editorOptions]="{ disabled: false }" [colSpan]="1"></dxi-item>
-              <dxi-item dataField="tgl_approve_finance" [editorOptions]="{ disabled: false }" [colSpan]="1"></dxi-item>
-              <dxi-item dataField="approve_finance_by" [editorOptions]="{ disabled: false }" [colSpan]="1"></dxi-item>
-              <dxi-item dataField="no_usulan_rkap" [editorOptions]="{ disabled: false }" [colSpan]="1"></dxi-item>
-              <dxi-item dataField="status" [editorOptions]="{ disabled: false }" [colSpan]="1"></dxi-item>
-              <dxi-item dataField="plan_tgl_spp" [editorOptions]="{ disabled: false }" [colSpan]="1"></dxi-item>
-              <dxi-item dataField="plan_tgl_mulai" [editorOptions]="{ disabled: false }" [colSpan]="1"></dxi-item>
-              <dxi-item dataField="plan_tgl_akhir" [editorOptions]="{ disabled: false }" [colSpan]="1"></dxi-item>
-              <dxi-item dataField="indikator_outcome" [editorOptions]="{ disabled: false }" [colSpan]="1"></dxi-item>
-              <dxi-item dataField="lokasi" [editorOptions]="{ disabled: false }" [colSpan]="1"></dxi-item>
-              <dxi-item dataField="rkap_nonrkap" [editorOptions]="{ disabled: false }" [colSpan]="1"></dxi-item>
-              <dxi-item dataField="deptid" [editorOptions]="{ disabled: false }" [colSpan]="1"></dxi-item>
-              <dxi-item dataField="jenis_oca" [editorOptions]="{ disabled: false }" [colSpan]="1"></dxi-item>
-              <dxi-item dataField="nilai_rkap" [editorOptions]="{ disabled: false }" [colSpan]="1"></dxi-item>
-              <dxi-item dataField="nilai_released" [editorOptions]="{ disabled: false }" [colSpan]="1"></dxi-item>
-              <dxi-item dataField="nilai_penyerapan" [editorOptions]="{ disabled: false }" [colSpan]="1"></dxi-item>
-              <dxi-item dataField="nilai_sisa" [editorOptions]="{ disabled: false }" [colSpan]="1"></dxi-item>
-              <dxi-item dataField="no_final_rkap" [editorOptions]="{ disabled: false }" [colSpan]="1"></dxi-item>
-              <dxi-item dataField="tgl_approve_spkk" [editorOptions]="{ disabled: false }" [colSpan]="1"></dxi-item>
-              <dxi-item dataField="approve_spkk_by" [editorOptions]="{ disabled: false }" [colSpan]="1"></dxi-item>
-              <dxi-item dataField="tgl_approve_dir" [editorOptions]="{ disabled: false }" [colSpan]="1"></dxi-item>
-              <dxi-item dataField="dir_approve_by" [editorOptions]="{ disabled: false }" [colSpan]="1"></dxi-item>
-              <dxi-item dataField="mata_uang_kontrak" [editorOptions]="{ disabled: false }" [colSpan]="1"></dxi-item>
-              <dxi-item dataField="riskid" [editorOptions]="{ disabled: false }" [colSpan]="1"></dxi-item>
-              <dxi-item dataField="mata_uang" [editorOptions]="{ disabled: false }" [colSpan]="1"></dxi-item>
-              </dxi-item>
-              <dxi-item itemType="group">
-                <dxi-item [colSpan]="1">
-                  <dx-button icon="search" text="Search" (onClick)="advSearch()"></dx-button>
-                  <dx-button icon="{{chevron}}" (onClick)="showAdvSearch()"></dx-button>
-                </dxi-item>
-              </dxi-item>
-            </dx-form>
-          </div>
-          <!-- END ADVANCED SEARCH -->
-        </div>
-
         <!-- Table -->
         <div id="data-grid-demo" style="margin-top: 20px;">
-          <dx-data-grid id="gridContainer" [dataSource]="gridDataSource" [showRowLines]="true" [showBorders]="true" [columnHidingEnabled]="true"
-                        [rowAlternationEnabled]="" [columnAutoWidth]="false" [wordWrapEnabled]="false">
+          <dx-data-grid id="gridContainer" 
+            [dataSource]="gridDataSource" 
+            [showRowLines]="true" 
+            [showBorders]="true" 
+            [columnHidingEnabled]="true"
+            [rowAlternationEnabled]="" 
+            [columnAutoWidth]="false" 
+            [wordWrapEnabled]="false">
+
+            <dxo-search-panel 
+            [visible]="true" 
+            [width]="240" 
+            placeholder="Search..."></dxo-search-panel>
+
             <dxo-header-filter [visible]="true"></dxo-header-filter>
             <dxo-filter-row [visible]="true"></dxo-filter-row>
             <dxo-paging [pageSize]="10"></dxo-paging>
-            <dxo-pager [showPageSizeSelector]="true" [allowedPageSizes]="[10, 20, 50]" [showInfo]="true" [showNavigationButtons]="true">
+            <dxo-pager 
+              [showPageSizeSelector]="true" 
+              [allowedPageSizes]="[10, 20, 50]" 
+              [showInfo]="true" 
+              [showNavigationButtons]="true">
             </dxo-pager>
             <dxo-export [enabled]="true" fileName="RKAP" [allowExportSelectedData]="false"></dxo-export>
 
-            <!-- <dxi-column dataField="rkapid" caption="ID" sortOrder="asc" [allowEditing]="false"></dxi-column> -->
-            <dxi-column dataField="rjppid" caption="RJPP" width="150px" sortOrder="asc" [allowEditing]="false"></dxi-column>
-            <dxi-column dataField="sid" caption="Sasaran" width="150px" sortOrder="asc" [allowEditing]="false"></dxi-column>
-            <dxi-column dataField="prkid" caption="Program Kerja" width="150px" sortOrder="asc" [allowEditing]="false"></dxi-column>
-            <!-- <dxi-column dataField="no_prk" caption="No Program" sortOrder="asc" [allowEditing]="false"></dxi-column> -->
-            <dxi-column dataField="program_kerja" caption="Program" width="250px" sortOrder="asc" [allowEditing]="false"></dxi-column>
-            <dxi-column dataField="deskripsi" caption="Deskripsi" width="200px" sortOrder="asc" [allowEditing]="false"></dxi-column>
-            <dxi-column dataField="jenis_anggaran" caption="Jenis Anggaran" sortOrder="asc" [allowEditing]="false"></dxi-column>
-            <dxi-column dataField="tipe_rkap" caption="Tipe RKAP" sortOrder="asc" [allowEditing]="false"></dxi-column>
-            <dxi-column dataField="no_kontrak_existing" caption="No Kontrak Existing" sortOrder="asc" [allowEditing]="false"></dxi-column>
-            <dxi-column dataField="tgl_akhir_kontrak" caption="Tanggal Akhir Kontrak" sortOrder="asc" [allowEditing]="false"></dxi-column>
-            <dxi-column dataField="nilai_kontrak" caption="Nilai Kontrak" sortOrder="asc" [allowEditing]="false"></dxi-column>
-            <dxi-column dataField="usulan_anggaran" caption="Usulan Anggaran" sortOrder="asc" [allowEditing]="false"></dxi-column>
-            <dxi-column dataField="gid" caption="Portofolio Produk" sortOrder="asc" [allowEditing]="false"></dxi-column>
-            <dxi-column dataField="prioritas" caption="Prioritas" sortOrder="asc" [allowEditing]="false"></dxi-column>
-            <dxi-column dataField="tgl_usulan" caption="Tanggal Usulan" sortOrder="asc" [allowEditing]="false"></dxi-column>
-            <dxi-column dataField="usulan_oleh" caption="Usulan Oleh" sortOrder="asc" [allowEditing]="false"></dxi-column>
-            <!-- <dxi-column dataField="tgl_update" caption="Tanggal update" sortOrder="asc" [allowEditing]="false"></dxi-column>
-            <dxi-column dataField="update_by" caption="update_by" sortOrder="asc" [allowEditing]="false"></dxi-column>
-            <dxi-column dataField="deleted_date" caption="deleted_date" sortOrder="asc" [allowEditing]="false"></dxi-column>
-            <dxi-column dataField="deleted_by" caption="deleted_by" sortOrder="asc" [allowEditing]="false"></dxi-column> -->
-            <dxi-column dataField="tgl_approve_gm" caption="Tanggal Approve GM" sortOrder="asc" [allowEditing]="false"></dxi-column>
-            <dxi-column dataField="approved_by" caption="Nama GM" sortOrder="asc" [allowEditing]="false"></dxi-column>
-            <dxi-column dataField="tgl_review_renko" caption="Tanggal Review Renko" sortOrder="asc" [allowEditing]="false"></dxi-column>
-            <dxi-column dataField="review_renko_by" caption="Nama Renko" sortOrder="asc" [allowEditing]="false"></dxi-column>
-            <dxi-column dataField="tgl_review_risk" caption="Tanggal Review MR" sortOrder="asc" [allowEditing]="false"></dxi-column>
-            <dxi-column dataField="risk_review_by" caption="Nama MR" sortOrder="asc" [allowEditing]="false"></dxi-column>
-            <dxi-column dataField="no_io" caption="No IO" sortOrder="asc" [allowEditing]="false"></dxi-column>
-            <dxi-column dataField="tgl_approve_finance" caption="Tanggal Approve Finance" sortOrder="asc" [allowEditing]="false"></dxi-column>
-            <dxi-column dataField="approve_finance_by" caption="Nama Finance" sortOrder="asc" [allowEditing]="false"></dxi-column>
-            <dxi-column dataField="no_usulan_rkap" caption="No Usulan RKAP" sortOrder="asc" [allowEditing]="false"></dxi-column>
-            <!-- <dxi-column dataField="status" caption="status" sortOrder="asc" [allowEditing]="false"></dxi-column> -->
-            <dxi-column dataField="plan_tgl_spp" caption="Tanggal SPP" sortOrder="asc" [allowEditing]="false"></dxi-column>
-            <dxi-column dataField="plan_tgl_mulai" caption="Tanggal Mulai" sortOrder="asc" [allowEditing]="false"></dxi-column>
-            <dxi-column dataField="plan_tgl_akhir" caption="Tanggal Akhir" sortOrder="asc" [allowEditing]="false"></dxi-column>
-            <dxi-column dataField="indikator_outcome" caption="Indikator Outcome" sortOrder="asc" [allowEditing]="false"></dxi-column>
-            <dxi-column dataField="lokasi" caption="Lokasi" sortOrder="asc" [allowEditing]="false"></dxi-column>
-            <!-- <dxi-column dataField="rkap_nonrkap" caption="rkap_nonrkap" sortOrder="asc" [allowEditing]="false"></dxi-column> -->
-            <dxi-column dataField="deptid" caption="Departement" sortOrder="asc" [allowEditing]="false"></dxi-column>
-            <dxi-column dataField="jenis_oca" caption="Jenis Oca" sortOrder="asc" [allowEditing]="false"></dxi-column>
-            <dxi-column dataField="nilai_rkap" caption="Nilai RKAP" sortOrder="asc" [allowEditing]="false"></dxi-column>
-            <!-- <dxi-column dataField="nilai_released" caption="Nilai Release" sortOrder="asc" [allowEditing]="false"></dxi-column> -->
-            <!-- <dxi-column dataField="nilai_penyerapan" caption="nilai_penyerapan" sortOrder="asc" [allowEditing]="false"></dxi-column> -->
-            <!-- <dxi-column dataField="nilai_sisa" caption="nilai_sisa" sortOrder="asc" [allowEditing]="false"></dxi-column> -->
-            <!-- <dxi-column dataField="no_final_rkap" caption="no_final_rkap" sortOrder="asc" [allowEditing]="false"></dxi-column> -->
-            <dxi-column dataField="tgl_approve_spkk" caption="Tanggal Approve KSPKK" sortOrder="asc" [allowEditing]="false"></dxi-column>
-            <dxi-column dataField="approve_spkk_by" caption="Nama KSPKK" sortOrder="asc" [allowEditing]="false"></dxi-column>
-            <dxi-column dataField="tgl_approve_dir" caption="Tanggal Approve Direktur" sortOrder="asc" [allowEditing]="false"></dxi-column>
-            <dxi-column dataField="dir_approve_by" caption="Nama Direktur" sortOrder="asc" [allowEditing]="false"></dxi-column>
-            <dxi-column dataField="mata_uang_kontrak" caption="Mata Uang Kontrak" sortOrder="asc" [allowEditing]="false"></dxi-column>
-            <dxi-column dataField="riskid" caption="Risiko" sortOrder="asc" [allowEditing]="false"></dxi-column>
-            <!-- <dxi-column dataField="mata_uang" caption="mata_uang" sortOrder="asc" [allowEditing]="false"></dxi-column> -->
-           
+            <dxi-column dataField="deptid" width="150px" caption="Departement" sortOrder="asc" [allowEditing]="false"></dxi-column>
+            <dxi-column dataField="program_kerja" width="200px" caption="Program Kerja" sortOrder="asc" [allowEditing]="false"></dxi-column>
+            <dxi-column dataField="deskripsi" width="350px" caption="Deskripsi" sortOrder="asc" [allowEditing]="false"></dxi-column>
+            <dxi-column dataField="status" width="200px" caption="Status" sortOrder="asc" [allowEditing]="false"></dxi-column>
+            <dxi-column dataField="no_kontrak_existing" caption="No Kontrak Existing" sortOrder="asc" [hidingPriority]="0" [allowEditing]="false"></dxi-column>
+            <dxi-column dataField="indikator_outcome" caption="Indikator Outcome" sortOrder="asc" [hidingPriority]="1" [allowEditing]="false"></dxi-column>
+            <dxi-column dataField="indid" caption="Indikator Input" sortOrder="asc" [hidingPriority]="2" [allowEditing]="false"></dxi-column>
+            <dxi-column dataField="outid" caption="Indikator Output" sortOrder="asc" [hidingPriority]="3" [allowEditing]="false"></dxi-column>
+            <dxi-column dataField="link_dok" caption="Link Dokumen" sortOrder="asc" [hidingPriority]="4" [allowEditing]="false"></dxi-column>
+            
             <dxi-column [fixed]="true" width="55px" dataField="codeid" caption="Action" [allowExporting]="false" [allowFiltering]="false" [allowSorting]="false" cellTemplate="cellTemplate"></dxi-column>
             <div *dxTemplate="let data of 'cellTemplate'">
               <div (click)="showMenu(data.value)" class="text-center">
