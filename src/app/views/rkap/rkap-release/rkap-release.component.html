@@ -11,54 +11,27 @@
     <div class="card-body">
       <div [hidden]="isDetail || isAdd">
 
-        <!-- SEARCH-->
-        <div id="form-container" style="margin-left: 20px; margin-right: 20px;">
-
-          <div *ngIf="!isAdv">
-            <dx-form id="formSearch" itemType="group" sssClass="first-group" [formData]="search" [colCount]="3">
-              <dxi-item dataField="released_by" [label]="{ text: 'Release By' }" [editorOptions]="{ disabled: false }" [colSpan]="2"></dxi-item>
-              <dxi-item [colSpan]="1">
-                <dx-button icon="search" text="Search" (onClick)="searching()"></dx-button>
-                <dx-button icon="{{chevron}}" (onClick)="showAdvSearch()"></dx-button>
-              </dxi-item>
-            </dx-form>
-          </div>
-
-          <!-- ADVANCED SEARCH -->
-          <div *ngIf="isAdv">
-            <dx-form id="form" itemType="group" sssClass="first-group" [formData]="search" [colCount]="3">
-              <dxi-item itemType="group" [colSpan]="2">
-                <dxi-item dataField="releaseid" [label]="{ text: 'ID' }" editorType="dxTextBox" [editorOptions]="{ disabled: false }" [colSpan]="1"></dxi-item>
-                <dxi-item dataField="released_date" [label]="{ text: 'Tanggal Release' }" editorType="dxTextArea" [editorOptions]="{ disabled: false, height: 90 }" [colSpan]="1"></dxi-item>
-                <dxi-item dataField="released_by" [label]="{ text: 'Release Oleh' }" editorType="dxTextBox" [editorOptions]="{ disabled: false }" [colSpan]="1"></dxi-item>
-                <dxi-item dataField="nilai_release" [label]="{ text: 'Nilai Release' }" editorType="dxTextBox" [editorOptions]="{ disabled: false }" [colSpan]="1"></dxi-item>
-                <dxi-item dataField="nilai_rkap" [label]="{ text: 'Nilai RKAP' }" editorType="dxTextBox" [editorOptions]="{ disabled: false }" [colSpan]="1"></dxi-item>
-                <dxi-item dataField="nilai_sisa" [label]="{ text: 'Nilai Sisa' }" editorType="dxTextBox" [editorOptions]="{ disabled: false }" [colSpan]="1"></dxi-item>
-                <dxi-item dataField="rkapid" [label]="{ text: 'RKAP' }" editorType="dxTextBox" [editorOptions]="{ disabled: false }" [colSpan]="1"></dxi-item>
-              </dxi-item>
-
-              <dxi-item itemType="group">
-                <dxi-item [colSpan]="1">
-                  <dx-button icon="search" text="Search" (onClick)="advSearch()"></dx-button>
-                  <dx-button icon="{{chevron}}" (onClick)="showAdvSearch()"></dx-button>
-                </dxi-item>
-              </dxi-item>
-            </dx-form>
-          </div>
-          <!-- END ADVANCED SEARCH -->
-          
-        </div>
-        <!-- END SEARCH -->
-
         <!-- TABLE -->
         <div id="data-grid-demo" style="margin-top: 20px;">
 
-          <dx-data-grid id="gridContainer" [dataSource]="gridDataSource" [showRowLines]="true" [showBorders]="true" [columnHidingEnabled]="false"
-                        [rowAlternationEnabled]="true" [columnAutoWidth]="true" [wordWrapEnabled]="true" [columnHidingEnabled]="true">
+          <dx-data-grid id="gridContainer" 
+            [dataSource]="gridDataSource" 
+            [showRowLines]="true" 
+            [showBorders]="true" 
+            [columnHidingEnabled]="false"
+            [rowAlternationEnabled]="true" 
+            [columnAutoWidth]="true" 
+            [wordWrapEnabled]="true" 
+            [columnHidingEnabled]="true">
+
             <dxo-header-filter [visible]="true"></dxo-header-filter>
             <dxo-filter-row [visible]="true"></dxo-filter-row>
             <dxo-paging [pageSize]="10"></dxo-paging>
-            <dxo-pager [showPageSizeSelector]="true" [allowedPageSizes]="[10, 20, 50]" [showInfo]="true" [showNavigationButtons]="true">
+            <dxo-pager 
+              [showPageSizeSelector]="true" 
+              [allowedPageSizes]="[10, 20, 50]" 
+              [showInfo]="true" 
+              [showNavigationButtons]="true">
             </dxo-pager>
             <dxo-export [enabled]="true" fileName="RKAP Release" [allowExportSelectedData]="false"></dxo-export>
 
